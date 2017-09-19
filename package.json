@@ -1,0 +1,31 @@
+{
+  "name": "ink-tab",
+  "version": "1.0.0",
+  "description": "Tab component for Ink",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/index.js -o dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdeniau/ink-tab.git"
+  },
+  "keywords": ["Ink", "tab"],
+  "author": "Julien Deniau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdeniau/ink-tab/issues"
+  },
+  "homepage": "https://github.com/jdeniau/ink-tab#readme",
+  "peerDependencies": {
+    "ink": "^0.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "ink": "^0.3.1"
+  }
+}
