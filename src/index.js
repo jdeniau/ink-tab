@@ -29,33 +29,36 @@ class Tabs extends Component {
   }
 
   handleKeyPress(ch, key) {
+    let nextTabId;
+
     switch (key.name) {
       case 'left': {
-        this.handleTabChange(this.props.children[this.state.activeTab - 1]);
+        nextTabId = this.state.activeTab - 1;
+        if (nextTabId < 0) {
+          nextTabId = this.props.children.length - 1;
+        }
 
-        this.setState(prevState => ({
-          activeTab: Math.max(0, prevState.activeTab - 1),
-        }));
-
-        return;
+        break;
       }
 
       case 'right': {
-        this.handleTabChange(this.props.children[this.state.activeTab + 1]);
+        nextTabId = this.state.activeTab + 1;
+        if (nextTabId >= this.props.children.length) {
+          nextTabId = 0;
+        }
 
-        this.setState(prevState => ({
-          activeTab: Math.min(
-            this.props.children.length - 1,
-            prevState.activeTab + 1
-          ),
-        }));
-
-        return;
+        break;
       }
 
       default:
         return;
     }
+
+    this.handleTabChange(this.props.children[nextTabId]);
+
+    this.setState({
+      activeTab:  nextTabId,
+    });
   }
 
   handleTabChange(tab) {
