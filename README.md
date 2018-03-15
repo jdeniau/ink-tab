@@ -83,3 +83,8 @@ Parameters:
 ##### name
 Type: `string`
 the name that will be returned in the `onChange` function
+
+## Hacking
+Issues and pull requests are welcome.
+
+You can run the demo script by running `yarn demo` or `npm run demo`
