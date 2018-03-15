@@ -52,6 +52,16 @@ class Tabs extends Component {
         break;
       }
 
+      case 'tab': {
+        if (true === key.shift) {
+          this.moveToPreviousTab();
+        } else {
+          this.moveToNextTab();
+        }
+
+        break;
+      }
+
       default:
         return;
     }
