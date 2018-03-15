@@ -38,7 +38,7 @@ class Tabs extends Component {
     }
 
     this.setState({
-      activeTab:  tabId,
+      activeTab: tabId,
     });
 
     this.props.onChange(tab.props.name, tab);
@@ -75,8 +75,7 @@ class Tabs extends Component {
       case '6':
       case '7':
       case '8':
-      case '9':
-      {
+      case '9': {
         if (true === key.meta) {
           const tabId = '0' === key.name ? 9 : parseInt(key.name, 10) - 1;
 
@@ -112,9 +111,7 @@ class Tabs extends Component {
       <Text>
         {key !== 0 && <Text dim> | </Text>}
         <Text keyword="gray">{key}. </Text>
-        <Text bgGreen={this.state.activeTab === key}>
-          {child}
-        </Text>
+        <Text bgGreen={this.state.activeTab === key}>{child}</Text>
       </Text>
     ));
   }
