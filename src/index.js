@@ -33,6 +33,10 @@ class Tabs extends Component {
   handleTabChange(tabId) {
     const tab = this.props.children[tabId];
 
+    if (!tab) {
+      return;
+    }
+
     this.setState({
       activeTab:  tabId,
     });
@@ -60,6 +64,24 @@ class Tabs extends Component {
         }
 
         break;
+      }
+
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+      {
+        if (true === key.meta) {
+          const tabId = '0' === key.name ? 9 : parseInt(key.name, 10) - 1;
+
+          this.handleTabChange(tabId);
+        }
       }
 
       default:
