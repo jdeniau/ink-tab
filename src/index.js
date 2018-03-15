@@ -10,8 +10,10 @@ class Tabs extends Component {
   constructor(props) {
     super(props);
 
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.moveToNextTab = this.moveToNextTab.bind(this);
+    this.moveToPreviousTab = this.moveToPreviousTab.bind(this);
 
     this.state = {
       activeTab: 0,
@@ -21,48 +23,56 @@ class Tabs extends Component {
   componentDidMount() {
     process.stdin.on('keypress', this.handleKeyPress);
 
-    this.handleTabChange(this.props.children[0]);
+    this.handleTabChange(0);
   }
 
   componentWillUnmount() {
     process.stdin.removeListener('keypress', this.handleKeyPress);
   }
 
-  handleKeyPress(ch, key) {
-    let nextTabId;
+  handleTabChange(tabId) {
+    const tab = this.props.children[tabId];
 
+    this.setState({
+      activeTab:  tabId,
+    });
+
+    this.props.onChange(tab.props.name, tab);
+  }
+
+  handleKeyPress(ch, key) {
     switch (key.name) {
       case 'left': {
-        nextTabId = this.state.activeTab - 1;
-        if (nextTabId < 0) {
-          nextTabId = this.props.children.length - 1;
-        }
-
+        this.moveToPreviousTab();
         break;
       }
 
       case 'right': {
-        nextTabId = this.state.activeTab + 1;
-        if (nextTabId >= this.props.children.length) {
-          nextTabId = 0;
-        }
-
+        this.moveToNextTab();
         break;
       }
 
       default:
         return;
     }
-
-    this.handleTabChange(this.props.children[nextTabId]);
-
-    this.setState({
-      activeTab:  nextTabId,
-    });
   }
 
-  handleTabChange(tab) {
-    this.props.onChange(tab.props.name, tab);
+  moveToNextTab() {
+    let nextTabId = this.state.activeTab + 1;
+    if (nextTabId >= this.props.children.length) {
+      nextTabId = 0;
+    }
+
+    this.handleTabChange(nextTabId);
+  }
+
+  moveToPreviousTab() {
+    let nextTabId = this.state.activeTab - 1;
+    if (nextTabId < 0) {
+      nextTabId = this.props.children.length - 1;
+    }
+
+    this.handleTabChange(nextTabId);
   }
 
   render() {
