@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/index.js -o dist/index.js",
+    "build": "mkdir -p dist && babel src/index.js -o dist/index.js",
     "demo": "babel-node demo/index.js",
     "precommit": "lint-staged",
     "prepublishOnly": "npm run build"
