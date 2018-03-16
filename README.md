@@ -4,7 +4,7 @@
 
 ## Demo
 
-![Demo](media/demo.gif)
+![Demo](media/demo.svg)
 
 ## Installation
 
