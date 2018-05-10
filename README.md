@@ -21,7 +21,7 @@ yarn add ink-tab
 ## Usage
 
 ```js
-import { h, render, Component, Text } from 'ink';
+import { h, render, Component, Color } from 'ink';
 import { Tabs, Tab } from 'ink-tab';
 
 class TabExample extends Component {
@@ -45,15 +45,9 @@ class TabExample extends Component {
     return (
       <div>
         <div>
-          {this.state.activeTabName === 'foo' && (
-            <Text>Selected tab is "foo"</Text>
-          )}
-          {this.state.activeTabName === 'bar' && (
-            <Text>Selected tab is "bar"</Text>
-          )}
-          {this.state.activeTabName === 'baz' && (
-            <Text>Selected tab is "baz"</Text>
-          )}
+          {this.state.activeTab === 'foo' && 'Selected tab is "foo"'}
+          {this.state.activeTab === 'bar' && 'Selected tab is "bar"'}
+          {this.state.activeTab === 'baz' && 'Selected tab is "baz"'}
         </div>
 
         <Tabs onChange={this.handleTabChange}>
@@ -100,7 +94,6 @@ the name that will be returned in the `onChange` function
 I created `ink-tab` at first to use in [changelog-view](https://github.com/jdeniau/changelog-view), a small cli to help you read what did change in your dependencies since your current version, reading CHANGELOG.md, HISTORY.md, github releases, etc.
 
 If you use it in a component, feel free to tell me, I will be pleased !
-
 
 ## Hacking
 

@@ -1,4 +1,4 @@
-import { h, render, Component, Text } from 'ink';
+import { h, render, Component, Color } from 'ink';
 import { Tabs, Tab } from '../src';
 
 class TabExample extends Component {
@@ -22,9 +22,9 @@ class TabExample extends Component {
     return (
       <div>
         <div>
-          {this.state.activeTab === 'foo' && <Text>Selected tab is "foo"</Text>}
-          {this.state.activeTab === 'bar' && <Text>Selected tab is "bar"</Text>}
-          {this.state.activeTab === 'baz' && <Text>Selected tab is "baz"</Text>}
+          {this.state.activeTab === 'foo' && 'Selected tab is "foo"'}
+          {this.state.activeTab === 'bar' && 'Selected tab is "bar"'}
+          {this.state.activeTab === 'baz' && 'Selected tab is "baz"'}
         </div>
 
         <Tabs onChange={this.handleTabChange}>

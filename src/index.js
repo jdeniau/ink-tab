@@ -1,8 +1,8 @@
-import { h, Component, Text } from 'ink';
+import { h, Component, Color, Fragment } from 'ink';
 
 class Tab extends Component {
   render() {
-    return <Text>{this.props.children}</Text>;
+    return <Fragment>{this.props.children}</Fragment>;
   }
 }
 
@@ -108,11 +108,11 @@ class Tabs extends Component {
 
   render() {
     return this.props.children.map((child, key) => (
-      <Text>
-        {key !== 0 && <Text dim> | </Text>}
-        <Text keyword="gray">{key}. </Text>
-        <Text bgGreen={this.state.activeTab === key}>{child}</Text>
-      </Text>
+      <Fragment>
+        {key !== 0 && <Color dim> | </Color>}
+        <Color keyword="grey">{key}. </Color>
+        <Color bgGreen={this.state.activeTab === key}>{child}</Color>
+      </Fragment>
     ));
   }
 }
