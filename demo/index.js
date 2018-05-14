@@ -1,4 +1,4 @@
-import { h, render, Component, Color } from 'ink';
+import { h, render, Component } from 'ink';
 import { Tabs, Tab } from '../src';
 
 class TabExample extends Component {

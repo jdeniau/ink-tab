@@ -2,7 +2,7 @@ import { h, Component, Color, Fragment } from 'ink';
 
 class Tab extends Component {
   render() {
-    return <Fragment>{this.props.children}</Fragment>;
+    return this.props.children;
   }
 }
 
