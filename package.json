@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/jdeniau/ink-tab#readme",
   "peerDependencies": {
-    "ink": "^0.3.0 || ^0.4.0"
+    "ink": "^0.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

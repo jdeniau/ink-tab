@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.1
+
+### Changed
+
+* Upgrade peerDependency to ink ^0.5.0 See #4
+
 ## 1.2.0
 
 ### Changed
