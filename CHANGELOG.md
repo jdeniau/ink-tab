@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.2.0
+
+### Changed
+
+* Upgrade dependency to ink ^0.5.0 See #4
+* Tab index now starts at 1 ("1. 2. 3." instead of "0. 1. 2.")
+
 ## 1.1.0
 
 ### Added
