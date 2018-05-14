@@ -1,6 +1,6 @@
 {
   "name": "ink-tab",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Tab component for Ink",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/jdeniau/ink-tab.git"
   },
-  "keywords": ["Ink", "tab"],
+  "keywords": [
+    "Ink",
+    "tab"
+  ],
   "author": "Julien Deniau",
   "license": "MIT",
   "bugs": {
@@ -34,6 +37,9 @@
     "prettier": "^1.11.1"
   },
   "lint-staged": {
-    "*.(js|json|md)": ["prettier --write", "git add"]
+    "*.(js|json|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
