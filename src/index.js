@@ -110,7 +110,7 @@ class Tabs extends Component {
     return this.props.children.map((child, key) => (
       <Fragment>
         {key !== 0 && <Color dim> | </Color>}
-        <Color keyword="grey">{key}. </Color>
+        <Color keyword="grey">{key + 1}. </Color>
         <Color bgGreen={this.state.activeTab === key}>{child}</Color>
       </Fragment>
     ));
