@@ -10,7 +10,7 @@
 
 ### Changed
 
-* Upgrade dependency to ink ^0.5.0 See #4
+* Upgrade dependency to ink ^0.5.0 See [#4](https://github.com/jdeniau/ink-tab/pull/4)
 * Tab index now starts at 1 ("1. 2. 3." instead of "0. 1. 2.")
 
 ## 1.1.0
