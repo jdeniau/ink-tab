@@ -4,7 +4,7 @@
 
 ### Changed
 
-* Upgrade peerDependency to ink ^0.5.0 See #4
+* Upgrade peerDependency to ink ^0.5.0 See [#4](https://github.com/jdeniau/ink-tab/pull/4)
 
 ## 1.2.0
 
