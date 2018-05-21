@@ -111,7 +111,12 @@ class Tabs extends Component {
       <Fragment>
         {key !== 0 && <Color dim> | </Color>}
         <Color keyword="grey">{key + 1}. </Color>
-        <Color bgGreen={this.state.activeTab === key}>{child}</Color>
+        <Color
+          bgGreen={this.state.activeTab === key}
+          black={this.state.activeTab === key}
+        >
+          {child}
+        </Color>
       </Fragment>
     ));
   }
