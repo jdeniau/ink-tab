@@ -14,10 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/jdeniau/ink-tab.git"
   },
-  "keywords": [
-    "Ink",
-    "tab"
-  ],
+  "keywords": ["Ink", "tab"],
   "author": "Julien Deniau",
   "license": "MIT",
   "bugs": {
@@ -28,18 +25,17 @@
     "ink": "^0.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
+    "@babel/core": "^7.0",
+    "@babel/cli": "^7.0",
+    "@babel/node": "^7.0",
+    "@babel/plugin-transform-react-jsx": "^7.0",
+    "@babel/preset-env": "^7.0",
     "husky": "^0.14.3",
     "ink": "^0.5.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1"
   },
   "lint-staged": {
-    "*.(js|json|md)": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.(js|json|md)": ["prettier --write", "git add"]
   }
 }
