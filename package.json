@@ -7,14 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "mkdir -p dist && babel src/index.js -o dist/index.js",
     "demo": "babel-node demo/index.js",
-    "precommit": "lint-staged",
     "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jdeniau/ink-tab.git"
   },
-  "keywords": ["Ink", "tab"],
+  "keywords": [
+    "Ink",
+    "tab"
+  ],
   "author": "Julien Deniau",
   "license": "MIT",
   "bugs": {
@@ -30,12 +32,20 @@
     "@babel/node": "^7.0",
     "@babel/plugin-transform-react-jsx": "^7.0",
     "@babel/preset-env": "^7.0",
-    "husky": "^0.14.3",
-    "ink": "^0.5.0",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1"
+    "husky": "^1.1.1",
+    "ink": "^0.5.1",
+    "lint-staged": "^7.3",
+    "prettier": "^1.14.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
-    "*.(js|json|md)": ["prettier --write", "git add"]
+    "*.(js|json|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

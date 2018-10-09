@@ -77,8 +77,8 @@ Type: `Function`
 
 Parameters:
 
-* `name`: the name specified in the `name` prop
-* `activeTab`: the current active tab component
+- `name`: the name specified in the `name` prop
+- `activeTab`: the current active tab component
 
 `onChange` function is called on component start and on every changes in tabs
 
