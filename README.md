@@ -21,7 +21,8 @@ yarn add ink-tab
 ## Usage
 
 ```js
-import { h, render, Component, Color } from 'ink';
+import React, { Component } from 'react';
+import { render, Color } from 'ink';
 import { Tabs, Tab } from 'ink-tab';
 
 class TabExample extends Component {

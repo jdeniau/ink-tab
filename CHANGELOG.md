@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.0
+
+- [Breaking] Use `ink` v2 (and thus React + react-reconcilier)
+- [Breaking] drop support for Node < 8. (ink 2 is dropping support anyway)
+
 ## 1.3.0
 
 ### Changed

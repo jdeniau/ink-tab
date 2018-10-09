@@ -1,4 +1,5 @@
-import { h, render, Component } from 'ink';
+import React, { Fragment, Component } from 'react';
+import { render } from 'ink';
 import { Tabs, Tab } from '../src';
 
 class TabExample extends Component {
@@ -37,4 +38,4 @@ class TabExample extends Component {
   }
 }
 
-render(<TabExample />);
+render(<TabExample />, { debug: false });

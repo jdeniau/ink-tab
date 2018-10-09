@@ -24,16 +24,16 @@
   },
   "homepage": "https://github.com/jdeniau/ink-tab#readme",
   "peerDependencies": {
-    "ink": "^0.5.0"
+    "ink": "^2.0.0-2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0",
     "@babel/cli": "^7.0",
+    "@babel/core": "^7.0",
     "@babel/node": "^7.0",
-    "@babel/plugin-transform-react-jsx": "^7.0",
     "@babel/preset-env": "^7.0",
+    "@babel/preset-react": "^7.0",
     "husky": "^1.1.1",
-    "ink": "^0.5.1",
+    "ink": "^2.0.0-2",
     "lint-staged": "^7.3",
     "prettier": "^1.14.3"
   },
@@ -47,5 +47,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "keypress": "^0.2.1"
   }
 }

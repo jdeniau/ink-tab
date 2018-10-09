@@ -1,4 +1,6 @@
-import { h, Component, Color, Fragment } from 'ink';
+import React, { Fragment, Component } from 'react';
+import { Box, Color, StdinContext } from 'ink';
+import keypress from 'keypress';
 
 class Tab extends Component {
   render() {
@@ -6,7 +8,7 @@ class Tab extends Component {
   }
 }
 
-class Tabs extends Component {
+class TabsWithStdin extends Component {
   constructor(props) {
     super(props);
 
@@ -21,13 +23,23 @@ class Tabs extends Component {
   }
 
   componentDidMount() {
-    process.stdin.on('keypress', this.handleKeyPress);
+    const { stdin, setRawMode } = this.props;
 
+    // use ink / node `setRawMode` to read key-by-key
+    setRawMode(true);
+    // and use user-friendly "keypress" library
+    keypress(stdin);
+
+    stdin.on('keypress', this.handleKeyPress);
+
+    // select the first tab on component mount
     this.handleTabChange(0);
   }
 
   componentWillUnmount() {
-    process.stdin.removeListener('keypress', this.handleKeyPress);
+    const { stdin } = this.props;
+
+    stdin.removeListener('keypress', this.handleKeyPress);
   }
 
   handleTabChange(tabId) {
@@ -45,6 +57,9 @@ class Tabs extends Component {
   }
 
   handleKeyPress(ch, key) {
+    if (!key) {
+      return;
+    }
     switch (key.name) {
       case 'left': {
         this.moveToPreviousTab();
@@ -107,19 +122,35 @@ class Tabs extends Component {
   }
 
   render() {
-    return this.props.children.map((child, key) => (
-      <Fragment>
-        {key !== 0 && <Color dim> | </Color>}
-        <Color keyword="grey">{key + 1}. </Color>
-        <Color
-          bgGreen={this.state.activeTab === key}
-          black={this.state.activeTab === key}
-        >
-          {child}
-        </Color>
-      </Fragment>
-    ));
+    return (
+      <Box>
+        {this.props.children.map((child, key) => {
+          return (
+            <Box key={child.props.name}>
+              {key !== 0 && <Color dim> | </Color>}
+              <Color keyword="grey">{key + 1}. </Color>
+              <Color
+                bgGreen={this.state.activeTab === key}
+                black={this.state.activeTab === key}
+              >
+                {child}
+              </Color>
+            </Box>
+          );
+        })}
+      </Box>
+    );
   }
+}
+
+function Tabs(props) {
+  return (
+    <StdinContext.Consumer>
+      {({ stdin, setRawMode }) => (
+        <TabsWithStdin stdin={stdin} setRawMode={setRawMode} {...props} />
+      )}
+    </StdinContext.Consumer>
+  );
 }
 
 export { Tab, Tabs };
