@@ -1,8 +1,10 @@
 .PHONY: demo clean install
 
-demo: clean media/demo.svg media/demo-column.svg
+demo: clean install media/demo.svg media/demo-column.svg
 
-install:
+install: node_modules
+
+node_modules: yarn.lock
 	yarn install
 
 clean:

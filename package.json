@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "mkdir -p dist && babel src/index.js -o dist/index.js",
-    "demo": "babel-node demo/index.js",
+    "demo": "clear && babel-node demo/index.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
