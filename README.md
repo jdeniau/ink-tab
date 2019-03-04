@@ -91,6 +91,8 @@ Parameters:
 
 The `<Tabs>` component pass every props given to the containing `<Box>` of the tabs. This way you can easily build a vertical tabs component by using `<Tabs flexDirection="column">`.
 
+![Demo column](media/demo-column.svg)
+
 #### Tab component
 
 ##### name
