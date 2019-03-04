@@ -22,7 +22,7 @@ yarn add ink-tab
 
 ```js
 import React, { Component } from 'react';
-import { render, Color } from 'ink';
+import { render, Box, Color } from 'ink';
 import { Tabs, Tab } from 'ink-tab';
 
 class TabExample extends Component {
@@ -44,19 +44,19 @@ class TabExample extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <Box flexDirection="column">
+        <Box>
           {this.state.activeTab === 'foo' && 'Selected tab is "foo"'}
           {this.state.activeTab === 'bar' && 'Selected tab is "bar"'}
           {this.state.activeTab === 'baz' && 'Selected tab is "baz"'}
-        </div>
+        </Box>
 
         <Tabs onChange={this.handleTabChange}>
           <Tab name="foo">Foo</Tab>
           <Tab name="bar">Bar</Tab>
           <Tab name="baz">Baz</Tab>
         </Tabs>
-      </div>
+      </Box>
     );
   }
 }
@@ -82,6 +82,10 @@ Parameters:
 - `activeTab`: the current active tab component
 
 `onChange` function is called on component start and on every changes in tabs
+
+##### flexDirection
+
+The `<Tabs>` component pass every props given to the containing `<Box>` of the tabs. This way you can easily build a vertical tabs component by using `<Tabs flexDirection="column">`.
 
 #### Tab component
 

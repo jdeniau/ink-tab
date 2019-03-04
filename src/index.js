@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import { Box, Color, StdinContext } from 'ink';
 import keypress from 'keypress';
 
@@ -8,10 +9,16 @@ class Tab extends Component {
   }
 }
 
+Tab.propTypes = {
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 class TabsWithStdin extends Component {
   constructor(props) {
     super(props);
 
+    this.isColumn = this.isColumn.bind(this);
     this.handleTabChange = this.handleTabChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.moveToNextTab = this.moveToNextTab.bind(this);
@@ -60,16 +67,41 @@ class TabsWithStdin extends Component {
     if (!key) {
       return;
     }
+
     switch (key.name) {
       case 'left': {
+        if (this.isColumn()) {
+          return;
+        }
+
         this.moveToPreviousTab();
         break;
       }
 
+      case 'up':
+        if (!this.isColumn()) {
+          return;
+        }
+
+        this.moveToPreviousTab();
+        break;
+
       case 'right': {
+        if (this.isColumn()) {
+          return;
+        }
+
         this.moveToNextTab();
         break;
       }
+
+      case 'down':
+        if (!this.isColumn()) {
+          return;
+        }
+
+        this.moveToNextTab();
+        break;
 
       case 'tab': {
         if (true === key.shift) {
@@ -103,6 +135,12 @@ class TabsWithStdin extends Component {
     }
   }
 
+  isColumn() {
+    const { flexDirection } = this.props;
+
+    return flexDirection === 'column' || flexDirection === 'column-reverse';
+  }
+
   moveToNextTab() {
     let nextTabId = this.state.activeTab + 1;
     if (nextTabId >= this.props.children.length) {
@@ -122,19 +160,27 @@ class TabsWithStdin extends Component {
   }
 
   render() {
+    const { children, onChange, flexDirection, ...rest } = this.props;
+
+    const separator = this.isColumn() ? '──────' : ' | ';
+
     return (
-      <Box>
-        {this.props.children.map((child, key) => {
+      <Box flexDirection={flexDirection} {...rest}>
+        {children.map((child, key) => {
+          const { name } = child.props;
+
           return (
-            <Box key={child.props.name}>
-              {key !== 0 && <Color dim> | </Color>}
-              <Color keyword="grey">{key + 1}. </Color>
-              <Color
-                bgGreen={this.state.activeTab === key}
-                black={this.state.activeTab === key}
-              >
-                {child}
-              </Color>
+            <Box key={name} flexDirection={flexDirection}>
+              {key !== 0 && <Color dim>{separator}</Color>}
+              <Box>
+                <Color keyword="grey">{key + 1}. </Color>
+                <Color
+                  bgGreen={this.state.activeTab === key}
+                  black={this.state.activeTab === key}
+                >
+                  {child}
+                </Color>
+              </Box>
             </Box>
           );
         })}
@@ -152,5 +198,10 @@ function Tabs(props) {
     </StdinContext.Consumer>
   );
 }
+
+Tabs.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export { Tab, Tabs };
