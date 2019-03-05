@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.1
+
+### Changed
+
+Remove unmaintained keypress in favor of node "readline"
+
 ## 2.0.0
 
 - [Breaking] Use `ink` v2 (and thus React + react-reconcilier)
