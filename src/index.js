@@ -1,7 +1,7 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
+import readline from 'readline';
 import PropTypes from 'prop-types';
 import { Box, Color, StdinContext } from 'ink';
-import keypress from 'keypress';
 
 class Tab extends Component {
   render() {
@@ -34,8 +34,9 @@ class TabsWithStdin extends Component {
 
     // use ink / node `setRawMode` to read key-by-key
     setRawMode(true);
-    // and use user-friendly "keypress" library
-    keypress(stdin);
+
+    // and listen to keypress events
+    readline.emitKeypressEvents(stdin);
 
     stdin.on('keypress', this.handleKeyPress);
 

@@ -2219,10 +2219,6 @@ json5@^0.5.0:
   version "0.5.1"
   resolved "http://registry.npmjs.org/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
-keypress@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.2.1.tgz#1e80454250018dbad4c3fe94497d6e67b6269c77"
-
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
