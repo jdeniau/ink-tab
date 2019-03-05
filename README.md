@@ -18,10 +18,6 @@ or with yarn
 yarn add ink-tab
 ```
 
-### If you are using ink 2 (and react-reconcilier)
-
-You can install the [`@next`](https://github.com/jdeniau/ink-tab/tree/next) branch
-
 ## Usage
 
 ```js
