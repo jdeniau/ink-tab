@@ -7,6 +7,7 @@
 - [Minor BC Break] Need ink ^2.1.0 (use automatic keypress event, added in 2.0.4)
 - Fix issue with CTRL-C and multiple instances
 - Use the `width` parameter when flexDirection is set to `column(-reverse)` to set the separator width
+- Expose a `keyMap` object to override default keyMap
 
 ## 2.0.1
 

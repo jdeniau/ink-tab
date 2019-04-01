@@ -44,6 +44,7 @@ class TabExample extends Component {
           onChange={this.handleTabChange}
           flexDirection={direction}
           width={direction === 'column' ? 20 : '100%'}
+          keyMap={{ useTab: false }}
         >
           <Tab name="foo">Foo</Tab>
           <Tab name="bar">Bar</Tab>

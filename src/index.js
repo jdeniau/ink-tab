@@ -27,6 +27,13 @@ class TabsWithStdin extends Component {
     this.state = {
       activeTab: 0,
     };
+
+    this.defaultKeyMap = {
+      useNumbers: true,
+      useTab: true,
+      previous: [this.isColumn() ? 'up' : 'left'],
+      next: [this.isColumn() ? 'down' : 'right'],
+    };
   }
 
   componentDidMount() {
@@ -63,46 +70,29 @@ class TabsWithStdin extends Component {
   }
 
   handleKeyPress(ch, key) {
+    const { keyMap } = this.props;
+
     if (!key) {
       return;
     }
 
+    const currentKeyMap = { ...this.defaultKeyMap, ...keyMap };
+    const { useNumbers, useTab, previous, next } = currentKeyMap;
+
+    if (previous.some(keyName => keyName === key.name)) {
+      this.moveToPreviousTab();
+    }
+
+    if (next.some(keyName => keyName === key.name)) {
+      this.moveToNextTab();
+    }
+
     switch (key.name) {
-      case 'left': {
-        if (this.isColumn()) {
-          return;
-        }
-
-        this.moveToPreviousTab();
-        break;
-      }
-
-      case 'up':
-        if (!this.isColumn()) {
-          return;
-        }
-
-        this.moveToPreviousTab();
-        break;
-
-      case 'right': {
-        if (this.isColumn()) {
-          return;
-        }
-
-        this.moveToNextTab();
-        break;
-      }
-
-      case 'down':
-        if (!this.isColumn()) {
-          return;
-        }
-
-        this.moveToNextTab();
-        break;
-
       case 'tab': {
+        if (!useTab) {
+          return;
+        }
+
         if (true === key.shift) {
           this.moveToPreviousTab();
         } else {
@@ -122,6 +112,9 @@ class TabsWithStdin extends Component {
       case '7':
       case '8':
       case '9': {
+        if (!useNumbers) {
+          return;
+        }
         if (true === key.meta) {
           const tabId = '0' === key.name ? 9 : parseInt(key.name, 10) - 1;
 
@@ -204,6 +197,12 @@ function Tabs(props) {
 Tabs.propTypes = {
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  keyMap: PropTypes.shape({
+    useNumbers: PropTypes.bool,
+    useTab: PropTypes.bool,
+    previous: PropTypes.arrayOf(PropTypes.string),
+    next: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };
 
 export { Tab, Tabs };
