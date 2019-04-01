@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.1
+
+### Changed
+
+- Fix small issue with proptypes and default width parameters
+
 ## 2.1.0
 
 ### Changed
