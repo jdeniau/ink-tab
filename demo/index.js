@@ -40,7 +40,11 @@ class TabExample extends Component {
 
         {direction === 'column' && <Box> </Box>}
 
-        <Tabs onChange={this.handleTabChange} flexDirection={direction}>
+        <Tabs
+          onChange={this.handleTabChange}
+          flexDirection={direction}
+          width={direction === 'column' ? 20 : '100%'}
+        >
           <Tab name="foo">Foo</Tab>
           <Tab name="bar">Bar</Tab>
           <Tab name="baz">Baz</Tab>

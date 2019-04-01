@@ -159,12 +159,15 @@ class TabsWithStdin extends Component {
   }
 
   render() {
-    const { children, onChange, flexDirection, ...rest } = this.props;
+    const { children, width, onChange, flexDirection, ...rest } = this.props;
+    const separatorWidth = width || 6;
 
-    const separator = this.isColumn() ? '──────' : ' | ';
+    const separator = this.isColumn()
+      ? new Array(separatorWidth).fill('─').join('')
+      : ' | ';
 
     return (
-      <Box flexDirection={flexDirection} {...rest}>
+      <Box flexDirection={flexDirection} width={width} {...rest}>
         {children.map((child, key) => {
           const { name } = child.props;
 
