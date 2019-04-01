@@ -35,9 +35,6 @@ class TabsWithStdin extends Component {
     // use ink / node `setRawMode` to read key-by-key
     setRawMode(true);
 
-    // and listen to keypress events
-    readline.emitKeypressEvents(stdin);
-
     stdin.on('keypress', this.handleKeyPress);
 
     // select the first tab on component mount
@@ -45,8 +42,9 @@ class TabsWithStdin extends Component {
   }
 
   componentWillUnmount() {
-    const { stdin } = this.props;
+    const { stdin, setRawMode } = this.props;
 
+    setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
     stdin.removeListener('keypress', this.handleKeyPress);
   }
 
