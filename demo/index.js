@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, Box } from 'ink';
 import { Tabs, Tab } from '../src';
@@ -11,6 +11,10 @@ const MainContent = ({ activeTab }) => (
   </Box>
 );
 
+MainContent.propTypes = {
+  activeTab: PropTypes.string.isRequired,
+};
+
 class TabExample extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +26,7 @@ class TabExample extends Component {
     this.handleTabChange = this.handleTabChange.bind(this);
   }
 
-  handleTabChange(name, child) {
+  handleTabChange(name /* , child */) {
     this.setState({
       activeTab: name,
     });
@@ -30,14 +34,16 @@ class TabExample extends Component {
 
   render() {
     const { direction } = this.props;
+    const { activeTab } = this.state;
 
     return (
       <Box
         flexDirection={direction === 'column' ? 'row-reverse' : 'column'}
         justifyContent={direction === 'column' ? 'flex-end' : 'flex-start'}
       >
-        <MainContent activeTab={this.state.activeTab} />
+        {activeTab && <MainContent activeTab={activeTab} />}
 
+        {/* eslint-disable-next-line react/self-closing-comp */}
         {direction === 'column' && <Box> </Box>}
 
         <Tabs

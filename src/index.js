@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import readline from 'readline';
 import PropTypes from 'prop-types';
 import { Box, Color, StdinContext } from 'ink';
 
 class Tab extends Component {
   render() {
-    return this.props.children;
+    const { children } = this.props;
+
+    return children;
   }
 }
 
 Tab.propTypes = {
   children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
 };
 
 class TabsWithStdin extends Component {
@@ -56,7 +57,9 @@ class TabsWithStdin extends Component {
   }
 
   handleTabChange(tabId) {
-    const tab = this.props.children[tabId];
+    const { children, onChange } = this.props;
+
+    const tab = children[tabId];
 
     if (!tab) {
       return;
@@ -66,7 +69,7 @@ class TabsWithStdin extends Component {
       activeTab: tabId,
     });
 
-    this.props.onChange(tab.props.name, tab);
+    onChange(tab.props.name, tab);
   }
 
   handleKeyPress(ch, key) {
@@ -93,7 +96,7 @@ class TabsWithStdin extends Component {
           return;
         }
 
-        if (true === key.shift) {
+        if (key.shift === true) {
           this.moveToPreviousTab();
         } else {
           this.moveToNextTab();
@@ -115,15 +118,17 @@ class TabsWithStdin extends Component {
         if (!useNumbers) {
           return;
         }
-        if (true === key.meta) {
-          const tabId = '0' === key.name ? 9 : parseInt(key.name, 10) - 1;
+        if (key.meta === true) {
+          const tabId = key.name === '0' ? 9 : parseInt(key.name, 10) - 1;
 
           this.handleTabChange(tabId);
         }
+
+        break;
       }
 
       default:
-        return;
+        break;
     }
   }
 
@@ -134,8 +139,11 @@ class TabsWithStdin extends Component {
   }
 
   moveToNextTab() {
-    let nextTabId = this.state.activeTab + 1;
-    if (nextTabId >= this.props.children.length) {
+    const { children } = this.props;
+    const { activeTab } = this.state;
+
+    let nextTabId = activeTab + 1;
+    if (nextTabId >= children.length) {
       nextTabId = 0;
     }
 
@@ -143,9 +151,12 @@ class TabsWithStdin extends Component {
   }
 
   moveToPreviousTab() {
-    let nextTabId = this.state.activeTab - 1;
+    const { children } = this.props;
+    const { activeTab } = this.state;
+
+    let nextTabId = activeTab - 1;
     if (nextTabId < 0) {
-      nextTabId = this.props.children.length - 1;
+      nextTabId = children.length - 1;
     }
 
     this.handleTabChange(nextTabId);
@@ -153,6 +164,8 @@ class TabsWithStdin extends Component {
 
   render() {
     const { children, onChange, flexDirection, ...rest } = this.props;
+    const { activeTab } = this.state;
+
     const separatorWidth = rest.width || 6;
 
     const separator = this.isColumn()
@@ -169,10 +182,7 @@ class TabsWithStdin extends Component {
               {key !== 0 && <Color dim>{separator}</Color>}
               <Box>
                 <Color keyword="grey">{key + 1}. </Color>
-                <Color
-                  bgGreen={this.state.activeTab === key}
-                  black={this.state.activeTab === key}
-                >
+                <Color bgGreen={activeTab === key} black={activeTab === key}>
                   {child}
                 </Color>
               </Box>
@@ -186,11 +196,12 @@ class TabsWithStdin extends Component {
 
 TabsWithStdin.defaultProps = {
   flexDirection: null,
+  keyMap: null,
 };
 
 TabsWithStdin.propTypes = {
   setRawMode: PropTypes.func.isRequired,
-  stdin: PropTypes.object.isRequired,
+  stdin: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   flexDirection: PropTypes.string,
