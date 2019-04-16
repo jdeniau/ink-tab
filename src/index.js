@@ -184,6 +184,24 @@ class TabsWithStdin extends Component {
   }
 }
 
+TabsWithStdin.defaultProps = {
+  flexDirection: null,
+};
+
+TabsWithStdin.propTypes = {
+  setRawMode: PropTypes.func.isRequired,
+  stdin: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  flexDirection: PropTypes.string,
+  keyMap: PropTypes.shape({
+    useNumbers: PropTypes.bool,
+    useTab: PropTypes.bool,
+    previous: PropTypes.arrayOf(PropTypes.string),
+    next: PropTypes.arrayOf(PropTypes.string),
+  }),
+};
+
 function Tabs(props) {
   return (
     <StdinContext.Consumer>
@@ -193,16 +211,5 @@ function Tabs(props) {
     </StdinContext.Consumer>
   );
 }
-
-Tabs.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  keyMap: PropTypes.shape({
-    useNumbers: PropTypes.bool,
-    useTab: PropTypes.bool,
-    previous: PropTypes.arrayOf(PropTypes.string),
-    next: PropTypes.arrayOf(PropTypes.string),
-  }),
-};
 
 export { Tab, Tabs };
