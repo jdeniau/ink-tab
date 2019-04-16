@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.2
+
+### Changed
+
+Add better proptypes of TabsWithStdin to avoid issue with StdinContext & nodemon. Fixes #9
+
 ## 2.1.1
 
 ### Changed
