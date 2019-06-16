@@ -61,7 +61,7 @@ class TabExample extends Component {
   }
 }
 
-render(TabExample);
+render(<TabExample/>);
 ```
 
 ### Props
