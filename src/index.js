@@ -195,7 +195,7 @@ class TabsWithStdin extends Component {
 }
 
 TabsWithStdin.defaultProps = {
-  flexDirection: null,
+  flexDirection: 'row',
   keyMap: null,
 };
 
