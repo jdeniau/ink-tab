@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.3
+
+### Changed
+
+Fix issue from 2.1.2 where the tabs did appear in column instead of in row.
+
 ## 2.1.2
 
 ### Changed
