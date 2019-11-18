@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.1.4
+
+### Fixed
+
+Fix issue with ink >= 2.4.0 preventing keypress events to be triggered. See https://github.com/vadimdemedes/ink/issues/243
+
 ## 2.1.3
 
 ### Changed
