@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import readline from 'readline';
 import { Box, Color, StdinContext } from 'ink';
 
 class Tab extends Component {
@@ -38,22 +39,27 @@ class TabsWithStdin extends Component {
   }
 
   componentDidMount() {
-    const { stdin, setRawMode } = this.props;
+    const { stdin, setRawMode, isRawModeSupported } = this.props;
 
-    // use ink / node `setRawMode` to read key-by-key
-    setRawMode(true);
+    if (isRawModeSupported) {
+      // use ink / node `setRawMode` to read key-by-key
+      setRawMode(true);
 
-    stdin.on('keypress', this.handleKeyPress);
+      readline.emitKeypressEvents(stdin);
+      stdin.on('keypress', this.handleKeyPress);
+    }
 
     // select the first tab on component mount
     this.handleTabChange(0);
   }
 
   componentWillUnmount() {
-    const { stdin, setRawMode } = this.props;
+    const { stdin, setRawMode, isRawModeSupported } = this.props;
 
-    setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
-    stdin.removeListener('keypress', this.handleKeyPress);
+    if (isRawModeSupported) {
+      setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
+      stdin.removeListener('keypress', this.handleKeyPress);
+    }
   }
 
   handleTabChange(tabId) {
@@ -200,6 +206,7 @@ TabsWithStdin.defaultProps = {
 };
 
 TabsWithStdin.propTypes = {
+  isRawModeSupported: PropTypes.bool.isRequired,
   setRawMode: PropTypes.func.isRequired,
   stdin: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   onChange: PropTypes.func.isRequired,
@@ -216,8 +223,13 @@ TabsWithStdin.propTypes = {
 function Tabs(props) {
   return (
     <StdinContext.Consumer>
-      {({ stdin, setRawMode }) => (
-        <TabsWithStdin stdin={stdin} setRawMode={setRawMode} {...props} />
+      {({ isRawModeSupported, stdin, setRawMode }) => (
+        <TabsWithStdin
+          isRawModeSupported={isRawModeSupported}
+          stdin={stdin}
+          setRawMode={setRawMode}
+          {...props}
+        />
       )}
     </StdinContext.Consumer>
   );
