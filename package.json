@@ -1,6 +1,6 @@
 {
   "name": "ink-tab",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Tab component for Ink",
   "main": "dist/index.js",
   "scripts": {
