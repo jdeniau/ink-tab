@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.2.0
+
+### Added
+
+Add typescript definition files #17. (Thanks to @sw-yx )
+
 ## 2.1.4
 
 ### Fixed
