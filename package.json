@@ -18,6 +18,7 @@
     "Ink",
     "tab"
   ],
+  "typings": "src/index.d.ts",
   "author": "Julien Deniau",
   "license": "MIT",
   "bugs": {
@@ -34,6 +35,7 @@
     "@babel/node": "^7.0",
     "@babel/preset-env": "^7.0",
     "@babel/preset-react": "^7.0",
+    "@types/react": "^16.9.11",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
