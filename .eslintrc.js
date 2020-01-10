@@ -17,8 +17,16 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'react/no-multi-comp': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': [
+      'error',
+      {
+        html: 'enforce',
+        custom: 'ignore',
+        explicitSpread: 'ignore',
+        exceptions: [],
+      },
+    ],
   },
 };

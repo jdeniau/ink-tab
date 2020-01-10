@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import readline from 'readline';
 import { Box, Color, StdinContext } from 'ink';
 
-class Tab extends Component {
-  render() {
-    const { children } = this.props;
-
-    return children;
-  }
-}
+const Tab = ({ children }) => children;
 
 Tab.propTypes = {
   children: PropTypes.node.isRequired,
