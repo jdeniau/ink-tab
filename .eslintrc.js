@@ -21,5 +21,6 @@ module.exports = {
         exceptions: [],
       },
     ],
+    'react/static-property-placement': ['error', 'static public field'],
   },
 };
