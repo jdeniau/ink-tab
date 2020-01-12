@@ -1,15 +1,26 @@
-import * as React from 'react';
-import * as readline from 'readline';
+import React from 'react';
+import readline from 'readline';
 import { Box, Color, StdinContext, StdinProps, BoxProps } from 'ink';
 
+/**
+ * Represent props of a <Tab>
+ */
 export interface TabProps {
-  children: React.ReactChildren;
+  children: React.ReactNode;
   name: string;
 }
-function Tab({ children }: TabProps): React.ReactChildren {
+
+/**
+ * A <Tab> component
+ * @param {TabProps} props
+ */
+function Tab({ children }: TabProps): React.ReactNode {
   return children;
 }
 
+/**
+ * Declare how does the keyboard interacts with ink-tab here
+ */
 interface KeyMapProps {
   useNumbers?: boolean;
   useTab?: boolean;
@@ -17,15 +28,23 @@ interface KeyMapProps {
   next: Array<string>;
 }
 
+/**
+ * A function called whenever a tab is changing.
+ * @param {string} name the name of the tab passed in the `name` prop
+ * @param {React.Component<TabProps>} activeTab the current active tab component
+ */
 interface OnChangeFunc {
-  (name: string, tab: React.Component<TabProps>): void;
+  (name: string, activeTab: React.Component<TabProps>): void;
 }
 
+/**
+ * Props for the <Tabs> component
+ */
 export interface TabsProps {
   onChange: OnChangeFunc;
   children: Array<React.Component<TabProps>>;
   flexDirection: BoxProps['flexDirection'];
-  width?: number;
+  width?: BoxProps['width'];
   keyMap: KeyMapProps;
 }
 interface TabsWithStdinProps extends TabsProps {
@@ -238,6 +257,11 @@ class TabsWithStdin extends React.Component<
     );
   }
 }
+
+/**
+ * The <Tabs> component
+ * @param {TabsProps} props
+ */
 function Tabs(props: TabsProps): React.ReactNode {
   return (
     <StdinContext.Consumer>

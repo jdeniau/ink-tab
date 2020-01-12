@@ -2,12 +2,16 @@
   "name": "ink-tab",
   "version": "2.2.1",
   "description": "Tab component for Ink",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "check-types": "tsc",
+    "check-types": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "yarn rimraf lib && yarn build:types && yarn build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "demo": "clear && babel-node demo/index.js",
     "prepublishOnly": "npm run build"
   },
@@ -19,7 +23,6 @@
     "Ink",
     "tab"
   ],
-  "typings": "src/index.d.ts",
   "author": "Julien Deniau",
   "license": "MIT",
   "bugs": {
@@ -55,6 +58,7 @@
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
+    "rimraf": "^3.0.0",
     "svg-term-cli": "^2.1.1",
     "typescript": "^3.7.4"
   },
