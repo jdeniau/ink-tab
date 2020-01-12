@@ -29,19 +29,15 @@ interface KeyMapProps {
 }
 
 /**
- * A function called whenever a tab is changing.
- * @param {string} name the name of the tab passed in the `name` prop
- * @param {React.Component<TabProps>} activeTab the current active tab component
- */
-interface OnChangeFunc {
-  (name: string, activeTab: React.Component<TabProps>): void;
-}
-
-/**
  * Props for the <Tabs> component
  */
 export interface TabsProps {
-  onChange: OnChangeFunc;
+  /**
+   * A function called whenever a tab is changing.
+   * @param {string} name the name of the tab passed in the `name` prop
+   * @param {React.Component<TabProps>} activeTab the current active tab component
+   */
+  onChange(name: string, activeTab: React.Component<TabProps>): void;
   children: Array<React.Component<TabProps>>;
   flexDirection: BoxProps['flexDirection'];
   width?: BoxProps['width'];
