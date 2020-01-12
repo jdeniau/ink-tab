@@ -1,17 +1,46 @@
-import React, { Component } from 'react';
+import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import readline from 'readline';
-import { Box, Color, StdinContext } from 'ink';
+import { Box, Color, StdinContext, StdinProps, BoxProps } from 'ink';
 
-const Tab = ({ children }) => children;
+export interface TabProps {
+  children: React.ReactChildren;
+  name: string;
+}
+function Tab({ children }: TabProps) {
+  return children;
+}
 
-Tab.propTypes = {
-  children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
-};
+interface keyMapProps {
+  useNumbers?: boolean;
+  useTab?: boolean;
+  previous: Array<string>;
+  next: Array<string>;
+}
 
-class TabsWithStdin extends Component {
-  constructor(props) {
+interface onChangeFunc {
+  (name: string, tab: React.Component<TabProps>): void;
+}
+
+export interface TabsWithStdinProps {
+  isRawModeSupported: boolean;
+  setRawMode: StdinProps['setRawMode'];
+  stdin: StdinProps['stdin'];
+  onChange: onChangeFunc;
+  children: Array<React.Component<TabProps>>;
+  flexDirection: BoxProps['flexDirection'];
+  keyMap: keyMapProps;
+}
+
+class TabsWithStdin extends Component<TabsWithStdinProps, any> {
+  public static defaultProps = {
+    flexDirection: 'row',
+    keyMap: null,
+  };
+
+  private defaultKeyMap: keyMapProps;
+
+  constructor(props: TabsWithStdinProps) {
     super(props);
 
     this.isColumn = this.isColumn.bind(this);
@@ -37,7 +66,9 @@ class TabsWithStdin extends Component {
 
     if (isRawModeSupported) {
       // use ink / node `setRawMode` to read key-by-key
-      setRawMode(true);
+      if (setRawMode) {
+        setRawMode(true);
+      }
 
       readline.emitKeypressEvents(stdin);
       stdin.on('keypress', this.handleKeyPress);
@@ -51,12 +82,14 @@ class TabsWithStdin extends Component {
     const { stdin, setRawMode, isRawModeSupported } = this.props;
 
     if (isRawModeSupported) {
-      setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
+      if (setRawMode) {
+        setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
+      }
       stdin.removeListener('keypress', this.handleKeyPress);
     }
   }
 
-  handleTabChange(tabId) {
+  handleTabChange(tabId: number) {
     const { children, onChange } = this.props;
 
     const tab = children[tabId];
@@ -193,27 +226,6 @@ class TabsWithStdin extends Component {
     );
   }
 }
-
-TabsWithStdin.defaultProps = {
-  flexDirection: 'row',
-  keyMap: null,
-};
-
-TabsWithStdin.propTypes = {
-  isRawModeSupported: PropTypes.bool.isRequired,
-  setRawMode: PropTypes.func.isRequired,
-  stdin: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  onChange: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  flexDirection: PropTypes.string,
-  keyMap: PropTypes.shape({
-    useNumbers: PropTypes.bool,
-    useTab: PropTypes.bool,
-    previous: PropTypes.arrayOf(PropTypes.string),
-    next: PropTypes.arrayOf(PropTypes.string),
-  }),
-};
-
 function Tabs(props) {
   return (
     <StdinContext.Consumer>

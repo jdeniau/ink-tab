@@ -4,9 +4,10 @@
   "description": "Tab component for Ink",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint src/",
+    "check-types": "tsc",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && babel src/index.js -o dist/index.js",
+    "build": "mkdir -p dist && babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "demo": "clear && babel-node demo/index.js",
     "prepublishOnly": "npm run build"
   },
@@ -33,10 +34,15 @@
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
     "@types/react": "^16.9.17",
-    "eslint": "^6.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.18.2",
@@ -49,7 +55,8 @@
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
-    "svg-term-cli": "^2.1.1"
+    "svg-term-cli": "^2.1.1",
+    "typescript": "^3.7.4"
   },
   "husky": {
     "hooks": {
