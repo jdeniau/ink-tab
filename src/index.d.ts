@@ -1,4 +1,4 @@
-declare module 'ink-tabs' {
+declare module 'ink-tab' {
   import React from 'react';
   export class Tabs extends React.Component<TabsProps> {}
   export class Tab extends React.Component<TabProps> {}
