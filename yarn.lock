@@ -175,7 +175,7 @@
   dependencies:
     "@babel/types" "^7.8.0"
 
-"@babel/helper-module-imports@^7.8.0":
+"@babel/helper-module-imports@^7.7.0", "@babel/helper-module-imports@^7.8.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.8.0.tgz#076edda55d8cd39c099981b785ce53f4303b967e"
   integrity sha512-ylY9J6ZxEcjmJaJ4P6aVs/fZdrZVctCGnxxfYXwCnSMapqd544zT8lWK2qI/vBPjE5gS0o2jILnH+AkpsPauEQ==
@@ -201,7 +201,7 @@
   dependencies:
     "@babel/types" "^7.8.0"
 
-"@babel/helper-plugin-utils@^7.8.0":
+"@babel/helper-plugin-utils@^7.0.0", "@babel/helper-plugin-utils@^7.8.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.8.0.tgz#59ec882d43c21c544ccb51decaecb306b34a8231"
   integrity sha512-+hAlRGdf8fHQAyNnDBqTHQhwdLURLdrCROoWaEQYiQhk2sV9Rhs+GoFZZfMJExTq9HG8o2NX3uN2G90bFtmFdA==
@@ -432,7 +432,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-typescript@^7.8.0":
+"@babel/plugin-syntax-typescript@^7.3.3", "@babel/plugin-syntax-typescript@^7.8.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.8.0.tgz#8bdf202f573cd0e1231caea970f41fdf104f69d7"
   integrity sha512-LrvVrabb993Ve5fzXsyEkfYCuhpXBwsUFjlvgD8UmXXg3r/8/ceooSdRvjdmtPXXz+lHaqZHZooV1jMWer2qkA==
@@ -1370,6 +1370,15 @@ babel-plugin-dynamic-import-node@^2.3.0:
   integrity sha512-o6qFkpeQEBxcqt0XYlWzAVxNCSCZdUgcR8IRlhD/8DylxjjO4foPcvTW0GGKa/cVt3rvxZ7o5ippJ+/0nvLhlQ==
   dependencies:
     object.assign "^4.1.0"
+
+babel-plugin-typescript-to-proptypes@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-typescript-to-proptypes/-/babel-plugin-typescript-to-proptypes-1.1.0.tgz#276f52c54af4c791229eb9d696f1aef55b3d0e53"
+  integrity sha512-GHdotmI+i53UB4Fh1k6jP2oRnbHwI1dHmgXya3GmZV9Qherom9bDhzA3sKW3jWJhBBFf30hcpXP1lLj5C/Vf3g==
+  dependencies:
+    "@babel/helper-module-imports" "^7.7.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-typescript" "^7.3.3"
 
 balanced-match@^1.0.0:
   version "1.0.0"
