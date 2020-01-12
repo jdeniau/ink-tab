@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.2.1
+
+### Fixed
+
+Fixed type module node ( Thanks to @aequasi )
+
 ## 2.2.0
 
 ### Added
