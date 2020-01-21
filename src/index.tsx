@@ -24,8 +24,8 @@ function Tab({ children }: TabProps): React.ReactNode {
 interface KeyMapProps {
   useNumbers?: boolean;
   useTab?: boolean;
-  previous: Array<string>;
-  next: Array<string>;
+  previous: string[];
+  next: string[];
 }
 
 /**
@@ -38,7 +38,7 @@ export interface TabsProps {
    * @param {React.Component<TabProps>} activeTab the current active tab component
    */
   onChange(name: string, activeTab: React.Component<TabProps>): void;
-  children: Array<React.Component<TabProps>>;
+  children: React.Component<TabProps>[];
   flexDirection: BoxProps['flexDirection'];
   width?: BoxProps['width'];
   keyMap: KeyMapProps;
