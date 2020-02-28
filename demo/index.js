@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, Box } from 'ink';
-import { Tabs, Tab } from '../src';
+import { Tabs, Tab } from '../lib';
 
 const MainContent = ({ activeTab }) => (
   <Box>
@@ -16,6 +16,10 @@ MainContent.propTypes = {
 };
 
 class TabExample extends Component {
+  static propTypes = {
+    direction: PropTypes.oneOf(['row', 'column']).isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -60,10 +64,6 @@ class TabExample extends Component {
     );
   }
 }
-
-TabExample.propTypes = {
-  direction: PropTypes.oneOf(['row', 'column']).isRequired,
-};
 
 render(
   <TabExample

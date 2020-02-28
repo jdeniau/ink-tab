@@ -24,6 +24,13 @@ function Tab({ children }: TabProps): React.ReactNode {
 interface KeyMapProps {
   useNumbers?: boolean;
   useTab?: boolean;
+  previous?: string[];
+  next?: string[];
+}
+
+interface RequiredKeyMapProps {
+  useNumbers: boolean;
+  useTab: boolean;
   previous: string[];
   next: string[];
 }
@@ -58,7 +65,7 @@ class TabsWithStdin extends React.Component<
   TabsWithStdinState
 > {
   // eslint-disable-next-line react/sort-comp
-  private defaultKeyMap: KeyMapProps;
+  private defaultKeyMap: RequiredKeyMapProps;
 
   public static defaultProps = {
     flexDirection: 'row',
