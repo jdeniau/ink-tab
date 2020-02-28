@@ -48,7 +48,7 @@ export interface TabsProps {
   children: React.Component<TabProps>[];
   flexDirection: BoxProps['flexDirection'];
   width?: BoxProps['width'];
-  keyMap: KeyMapProps;
+  keyMap?: KeyMapProps;
 }
 interface TabsWithStdinProps extends TabsProps {
   isRawModeSupported: boolean;
