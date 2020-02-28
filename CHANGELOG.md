@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 3.0.0
+
+### API Compatibility
+
+Version 3.0.0 maintains API compatibility with 2.x but due to major internal changes and potential behavior differences across nearly all API surfaces, semver dictates a major version bump.
+
+### Changed
+
+- Moved to typescript 😃
+
 ## 2.2.1
 
 ### Fixed
