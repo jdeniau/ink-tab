@@ -144,7 +144,7 @@ class TabsWithStdin extends React.Component<
   ): void {
     const { keyMap, hasFocus } = this.props;
 
-    if (!key || false === hasFocus) {
+    if (!key || hasFocus === false) {
       return;
     }
 
@@ -161,7 +161,7 @@ class TabsWithStdin extends React.Component<
 
     switch (key.name) {
       case 'tab': {
-        if (!useTab || null !== hasFocus) {
+        if (!useTab || hasFocus !== null) {
           // if hasFocus != null, then the focus is managed by ink and thus we can not use this key
           return;
         }
