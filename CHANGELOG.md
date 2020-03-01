@@ -1,11 +1,5 @@
 # CHANGELOG
 
-## 3.1.0
-
-### Added
-
-- Added the `hasFocus` props.
-
 ## 3.0.0
 
 ### API Compatibility
@@ -15,6 +9,10 @@ Version 3.0.0 maintains API compatibility with 2.x but due to major internal cha
 ### Changed
 
 - Moved to typescript 😃
+
+### Added
+
+- Added the `hasFocus` props.
 
 ## 2.2.1
 
