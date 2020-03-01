@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 3.1.0
+
+### Added
+
+- Added the `hasFocus` props.
+
 ## 3.0.0
 
 ### API Compatibility

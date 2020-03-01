@@ -61,7 +61,7 @@ class TabExample extends Component {
   }
 }
 
-render(<TabExample/>);
+render(<TabExample />);
 ```
 
 ### Props
@@ -112,12 +112,39 @@ The `<Tabs>` component pass every props given to the containing `<Box>` of the t
 
 If you specify a `width` to `<Tabs flexDirection="column"`, the width will be used to force the separator width.
 
+##### hasFocus
+
+See [Focus management](#focus-management)
+
 #### Tab component
 
 ##### name
 
 Type: `string`
 the name that will be returned in the `onChange` function
+
+#### Focus management
+
+The `Tabs` accept a `hasFocus` prop to handle focus management by an external source.
+
+If `hasFocus` is `true` or `false`, the TAB key is disabled for navigations.
+
+The props can be controlled by any component / application, but the recommended way to let ink manage the focus and use it like that:
+
+```js
+import { withFocus } from 'ink';
+import { Tabs } from 'ink-tab';
+
+const FocusableTabs = withFocus(Tabs);
+
+<FocusableTabs>
+    <Tab name="foo">Some tab</Tab>
+<FocusableTabs>
+```
+
+⚠ Ink focus management feature has not been merged for now ⚠. See: https://github.com/vadimdemedes/ink/pull/262
+
+Even though it is not merged in ink now, you can use this feature for `ink-tab`.
 
 ## Who is using `ink-tab` ?
 
