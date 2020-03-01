@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 4.0.0
+
+### Changed
+
+- Upgrade dependencies to ink `^3.0.0`
+- `hasFocus` has been renamed to `isFocused` to match ink API.
+
 ## 3.0.2
 
 ### Changed

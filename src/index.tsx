@@ -48,7 +48,7 @@ export interface TabsProps {
   flexDirection?: BoxProps['flexDirection'];
   width?: BoxProps['width'];
   keyMap?: KeyMapProps;
-  hasFocus?: boolean;
+  isFocused?: boolean;
 }
 interface TabsWithStdinProps extends TabsProps {
   isRawModeSupported: boolean;
@@ -70,7 +70,7 @@ class TabsWithStdin extends React.Component<
   public static defaultProps = {
     flexDirection: 'row',
     keyMap: null,
-    hasFocus: null, // hasFocus is null mean that the focus not handle by ink
+    isFocused: null, // isFocused is null mean that the focus not handle by ink
   };
 
   constructor(props: TabsWithStdinProps) {
@@ -141,9 +141,9 @@ class TabsWithStdin extends React.Component<
     ch: string,
     key: null | { name: string; shift: boolean; meta: boolean }
   ): void {
-    const { keyMap, hasFocus } = this.props;
+    const { keyMap, isFocused } = this.props;
 
-    if (!key || hasFocus === false) {
+    if (!key || isFocused === false) {
       return;
     }
 
@@ -160,8 +160,8 @@ class TabsWithStdin extends React.Component<
 
     switch (key.name) {
       case 'tab': {
-        if (!useTab || hasFocus !== null) {
-          // if hasFocus != null, then the focus is managed by ink and thus we can not use this key
+        if (!useTab || isFocused !== null) {
+          // if isFocused != null, then the focus is managed by ink and thus we can not use this key
           return;
         }
 
@@ -232,7 +232,7 @@ class TabsWithStdin extends React.Component<
   }
 
   render(): React.ReactNode {
-    const { children, flexDirection, width, hasFocus, ...rest } = this.props;
+    const { children, flexDirection, width, isFocused, ...rest } = this.props;
     const { activeTab } = this.state;
 
     const separatorWidth = width || 6;
@@ -246,7 +246,7 @@ class TabsWithStdin extends React.Component<
         {children.map((child, key) => {
           const { name } = child.props;
           let colors = {};
-          if (hasFocus !== false) {
+          if (isFocused !== false) {
             colors = {
               backgroundColor: activeTab === key ? 'green' : undefined,
               color: activeTab === key ? 'black' : undefined,
