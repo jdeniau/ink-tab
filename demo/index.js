@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render, Box, Text } from 'ink';
+import { render, Box, Text, useFocus } from 'ink';
 import { Tabs, Tab } from '../lib';
+
+function FocusableTabs(props) {
+  const { isFocused } = useFocus({ autoFocus: true });
+
+  return <Tabs {...props} isFocused={isFocused} />;
+}
+
+function Focusable({ children }) {
+  const { isFocused } = useFocus();
+
+  return (
+    <Box>
+      {children}
+      {isFocused && <Text> with focus</Text>}
+    </Box>
+  );
+}
 
 const MainContent = ({ activeTab }) => (
   <Text>
@@ -18,6 +35,7 @@ MainContent.propTypes = {
 class TabExample extends Component {
   static propTypes = {
     direction: PropTypes.oneOf(['row', 'column']).isRequired,
+    isFocusManagedByInk: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -37,8 +55,10 @@ class TabExample extends Component {
   }
 
   render() {
-    const { direction } = this.props;
+    const { direction, isFocusManagedByInk } = this.props;
     const { activeTab } = this.state;
+
+    const TabElement = isFocusManagedByInk ? FocusableTabs : Tabs;
 
     return (
       <Box
@@ -50,16 +70,22 @@ class TabExample extends Component {
         {/* eslint-disable-next-line react/self-closing-comp */}
         {direction === 'column' && <Box> </Box>}
 
-        <Tabs
+        {isFocusManagedByInk && (
+          <Focusable>
+            <Text>focus switcher</Text>
+          </Focusable>
+        )}
+
+        <TabElement
           onChange={this.handleTabChange}
           flexDirection={direction}
           width={direction === 'column' ? 20 : '100%'}
-          keyMap={{ useTab: false }}
+          // keyMap={{ useTab: false }}
         >
           <Tab name="foo">Foo</Tab>
           <Tab name="bar">Bar</Tab>
           <Tab name="baz">Baz</Tab>
-        </Tabs>
+        </TabElement>
       </Box>
     );
   }
@@ -68,6 +94,7 @@ class TabExample extends Component {
 render(
   <TabExample
     direction={process.argv.includes('--column') ? 'column' : 'row'}
+    isFocusManagedByInk={process.argv.includes('--focus')}
   />,
   { debug: false }
 );
