@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 3.0.1
+
+### Fixed
+
+- Fix issue with typescript and <Tab> Component. See #23
+
 ## 3.0.0
 
 ### API Compatibility

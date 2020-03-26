@@ -6,17 +6,16 @@ import { Box, Color, StdinContext, StdinProps, BoxProps } from 'ink';
  * Represent props of a <Tab>
  */
 export interface TabProps {
-  children: React.ReactNode;
   name: string;
 }
 
 /**
  * A <Tab> component
- * @param {TabProps} props
  */
-function Tab({ children }: TabProps): React.ReactNode {
-  return children;
-}
+// eslint-disable-next-line react/prop-types
+const Tab: React.FunctionComponent<TabProps> = ({ children }) => (
+  <>{children}</>
+);
 
 /**
  * Declare how does the keyboard interacts with ink-tab here
@@ -44,9 +43,9 @@ export interface TabsProps {
    * @param {string} name the name of the tab passed in the `name` prop
    * @param {React.Component<TabProps>} activeTab the current active tab component
    */
-  onChange(name: string, activeTab: React.Component<TabProps>): void;
-  children: React.Component<TabProps>[];
-  flexDirection: BoxProps['flexDirection'];
+  onChange(name: string, activeTab: React.ReactElement<typeof Tab>): void;
+  children: React.ReactElement<typeof Tab>[];
+  flexDirection?: BoxProps['flexDirection'];
   width?: BoxProps['width'];
   keyMap?: KeyMapProps;
   hasFocus?: boolean;
@@ -276,25 +275,22 @@ class TabsWithStdin extends React.Component<
 
 /**
  * The <Tabs> component
- * @param {TabsProps} props
  */
-function Tabs(props: TabsProps): React.ReactNode {
-  return (
-    <StdinContext.Consumer>
-      {({
-        isRawModeSupported,
-        stdin,
-        setRawMode,
-      }: StdinProps): React.ReactNode => (
-        <TabsWithStdin
-          isRawModeSupported={isRawModeSupported}
-          stdin={stdin}
-          setRawMode={setRawMode}
-          {...props}
-        />
-      )}
-    </StdinContext.Consumer>
-  );
-}
+const Tabs: React.FunctionComponent<TabsProps> = props => (
+  <StdinContext.Consumer>
+    {({
+      isRawModeSupported,
+      stdin,
+      setRawMode,
+    }: StdinProps): React.ReactNode => (
+      <TabsWithStdin
+        isRawModeSupported={isRawModeSupported}
+        stdin={stdin}
+        setRawMode={setRawMode}
+        {...props}
+      />
+    )}
+  </StdinContext.Consumer>
+);
 
 export { Tab, Tabs };
