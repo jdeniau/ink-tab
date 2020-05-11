@@ -4,11 +4,11 @@ description: Tabs component
 
 # Tabs
 
-**childrens**
+### **children**
 
 `Tabs` must only contain `Tab` children
 
-**onChange**
+### **onChange**
 
 Type: `Function`
 
@@ -19,7 +19,7 @@ Parameters:
 
 `onChange` function is called on component start and on every changes in tabs
 
-**keyMap**
+### **keyMap**
 
 The default keyMap is the following:
 
@@ -38,17 +38,17 @@ You can override it this way:
 }}>
 ```
 
-**flexDirection**
+### **flexDirection**
 
 The `<Tabs>` component pass every props given to the containing `<Box>` of the tabs. This way you can easily build a vertical tabs component by using `<Tabs flexDirection="column">`.
 
 ![Demo column](https://github.com/jdeniau/ink-tab/raw/master/media/demo-column.svg?sanitize=true)
 
-**width**
+### **width**
 
 If you specify a `width` to `<Tabs flexDirection="column"`, the width will be used to force the separator width.
 
-**hasFocus**
+### **hasFocus**
 
 See [Focus management](tab.md#focus-management)
 
