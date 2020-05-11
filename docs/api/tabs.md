@@ -50,5 +50,5 @@ If you specify a `width` to `<Tabs flexDirection="column"`, the width will be us
 
 **hasFocus**
 
-See [Focus management](tab.md)
+See [Focus management](tab.md#focus-management)
 
