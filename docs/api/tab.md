@@ -8,7 +8,7 @@ description: Tab component
 
 Type: `string` the name that will be returned in the `onChange` function
 
-**Focus management**
+### **Focus management**
 
 The `Tabs` accept a `hasFocus` prop to handle focus management by an external source.
 
