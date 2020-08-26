@@ -1,6 +1,6 @@
 import React from 'react';
 import readline from 'readline';
-import { Box, Color, StdinContext, StdinProps, BoxProps } from 'ink';
+import { Box, StdinProps, BoxProps, Text, useStdin } from 'ink';
 
 /**
  * Represent props of a <Tab>
@@ -96,7 +96,7 @@ class TabsWithStdin extends React.Component<
   componentDidMount(): void {
     const { stdin, setRawMode, isRawModeSupported } = this.props;
 
-    if (isRawModeSupported) {
+    if (isRawModeSupported && stdin) {
       // use ink / node `setRawMode` to read key-by-key
       if (setRawMode) {
         setRawMode(true);
@@ -113,7 +113,7 @@ class TabsWithStdin extends React.Component<
   componentWillUnmount(): void {
     const { stdin, setRawMode, isRawModeSupported } = this.props;
 
-    if (isRawModeSupported) {
+    if (isRawModeSupported && stdin) {
       if (setRawMode) {
         setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
       }
@@ -248,22 +248,22 @@ class TabsWithStdin extends React.Component<
           let colors = {};
           if (hasFocus !== false) {
             colors = {
-              bgGreen: activeTab === key,
-              black: activeTab === key,
+              backgroundColor: activeTab === key ? 'green' : undefined,
+              color: activeTab === key ? 'black' : undefined,
             };
           } else {
             colors = {
-              bgGray: activeTab === key,
-              black: activeTab === key,
+              backgroundColor: activeTab === key ? 'gray' : undefined,
+              color: activeTab === key ? 'black' : undefined,
             };
           }
 
           return (
             <Box key={name} flexDirection={flexDirection}>
-              {key !== 0 && <Color dim>{separator}</Color>}
+              {key !== 0 && <Text color="dim">{separator}</Text>}
               <Box>
-                <Color keyword="grey">{key + 1}. </Color>
-                <Color {...colors}>{child}</Color>
+                <Text color="grey">{key + 1}. </Text>
+                <Text {...colors}>{child}</Text>
               </Box>
             </Box>
           );
@@ -276,21 +276,17 @@ class TabsWithStdin extends React.Component<
 /**
  * The <Tabs> component
  */
-const Tabs: React.FunctionComponent<TabsProps> = props => (
-  <StdinContext.Consumer>
-    {({
-      isRawModeSupported,
-      stdin,
-      setRawMode,
-    }: StdinProps): React.ReactNode => (
-      <TabsWithStdin
-        isRawModeSupported={isRawModeSupported}
-        stdin={stdin}
-        setRawMode={setRawMode}
-        {...props}
-      />
-    )}
-  </StdinContext.Consumer>
-);
+const Tabs: React.FunctionComponent<TabsProps> = props => {
+  const { isRawModeSupported, stdin, setRawMode } = useStdin();
+
+  return (
+    <TabsWithStdin
+      isRawModeSupported={isRawModeSupported}
+      stdin={stdin}
+      setRawMode={setRawMode}
+      {...props}
+    />
+  );
+};
 
 export { Tab, Tabs };

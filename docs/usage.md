@@ -4,15 +4,19 @@
 
 {% tabs %}
 {% tab title="npm" %}
+
 ```bash
 npm install ink-tab
 ```
+
 {% endtab %}
 
 {% tab title="yarn" %}
+
 ```bash
 yarn add ink-tab
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -20,6 +24,7 @@ yarn add ink-tab
 
 {% tabs %}
 {% tab title="JavaScript : Class component" %}
+
 ```jsx
 import React, { Component } from 'react';
 import { render, Box, Color } from 'ink';
@@ -50,9 +55,11 @@ class TabExample extends Component {
     return (
       <Box flexDirection="column">
         <Box>
-          {this.state.activeTab === 'foo' && 'Selected tab is "foo"'}
-          {this.state.activeTab === 'bar' && 'Selected tab is "bar"'}
-          {this.state.activeTab === 'baz' && 'Selected tab is "baz"'}
+          <Text>
+            {this.state.activeTab === 'foo' && 'Selected tab is "foo"'}
+            {this.state.activeTab === 'bar' && 'Selected tab is "bar"'}
+            {this.state.activeTab === 'baz' && 'Selected tab is "baz"'}
+          </Text>
         </Box>
 
         <Tabs onChange={this.handleTabChange}>
@@ -67,9 +74,11 @@ class TabExample extends Component {
 
 render(<TabExample />);
 ```
+
 {% endtab %}
 
 {% tab title="Javascript : Functional component" %}
+
 ```jsx
 import React, { useState } from 'react';
 import { render, Box, Color } from 'ink';
@@ -89,9 +98,11 @@ function TabExample(props) {
   return (
     <Box flexDirection="column">
       <Box>
-        {activeTab === 'foo' && 'Selected tab is "foo"'}
-        {activeTab === 'bar' && 'Selected tab is "bar"'}
-        {activeTab === 'baz' && 'Selected tab is "baz"'}
+        <Text>
+          {activeTab === 'foo' && 'Selected tab is "foo"'}
+          {activeTab === 'bar' && 'Selected tab is "bar"'}
+          {activeTab === 'baz' && 'Selected tab is "baz"'}
+        </Text>
       </Box>
 
       <Tabs onChange={handleTabChange}>
@@ -105,6 +116,6 @@ function TabExample(props) {
 
 render(<TabExample />);
 ```
+
 {% endtab %}
 {% endtabs %}
-

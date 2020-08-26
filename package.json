@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/jdeniau/ink-tab#readme",
   "peerDependencies": {
-    "ink": "^2.2.0",
+    "ink": "^3.0.0",
     "react": "^16.8.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.15.1",
     "eslint-plugin-react-hooks": "^1.7.0",
     "husky": "^3.1.0",
-    "ink": "^2.2.0",
+    "ink": "^3.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",

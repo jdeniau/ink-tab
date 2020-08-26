@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render, Box } from 'ink';
+import { render, Box, Text } from 'ink';
 import { Tabs, Tab } from '../lib';
 
 const MainContent = ({ activeTab }) => (
-  <Box>
+  <Text>
     {activeTab === 'foo' && 'Selected tab is "foo"'}
     {activeTab === 'bar' && 'Selected tab is "bar"'}
     {activeTab === 'baz' && 'Selected tab is "baz"'}
-  </Box>
+  </Text>
 );
 
 MainContent.propTypes = {
