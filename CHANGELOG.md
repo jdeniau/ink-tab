@@ -6,6 +6,7 @@
 
 - Upgrade dependencies to ink `^3.0.0`
 - `hasFocus` has been renamed to `isFocused` to match ink API.
+- Drop support for node < 10 (ink does not supports them anyway).
 
 ## 3.0.2
 
