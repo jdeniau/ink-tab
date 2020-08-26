@@ -67,8 +67,11 @@ class TabExample extends Component {
       >
         {activeTab && <MainContent activeTab={activeTab} />}
 
-        {/* eslint-disable-next-line react/self-closing-comp */}
-        {direction === 'column' && <Box> </Box>}
+        {direction === 'column' && (
+          <Box>
+            <Text> </Text>
+          </Box>
+        )}
 
         {isFocusManagedByInk && (
           <Focusable>
