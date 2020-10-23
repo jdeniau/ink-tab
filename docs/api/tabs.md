@@ -48,6 +48,11 @@ The `<Tabs>` component pass every props given to the containing `<Box>` of the t
 
 If you specify a `width` to `<Tabs flexDirection="column"`, the width will be used to force the separator width.
 
+### **initialActiveTab**
+
+The first tab is active by default on component mount, you can choose another tab by setting
+`initialActiveTab` to the index of it.
+
 ## **Focus management**
 
 The `Tabs` accept a `isFocused` prop to handle focus management by an external source.

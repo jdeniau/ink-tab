@@ -49,6 +49,7 @@ export interface TabsProps {
   width?: BoxProps['width'];
   keyMap?: KeyMapProps;
   isFocused?: boolean;
+  initialActiveTab?: number;
 }
 interface TabsWithStdinProps extends TabsProps {
   isRawModeSupported: boolean;
@@ -71,6 +72,7 @@ class TabsWithStdin extends React.Component<
     flexDirection: 'row',
     keyMap: null,
     isFocused: null, // isFocused is null mean that the focus not handle by ink
+    initialActiveTab: 0,
   };
 
   constructor(props: TabsWithStdinProps) {
@@ -94,7 +96,13 @@ class TabsWithStdin extends React.Component<
   }
 
   componentDidMount(): void {
-    const { stdin, setRawMode, isRawModeSupported } = this.props;
+    const {
+      stdin,
+      setRawMode,
+      isRawModeSupported,
+      children,
+      initialActiveTab,
+    } = this.props;
 
     if (isRawModeSupported && stdin) {
       // use ink / node `setRawMode` to read key-by-key
@@ -106,8 +114,12 @@ class TabsWithStdin extends React.Component<
       stdin.on('keypress', this.handleKeyPress);
     }
 
-    // select the first tab on component mount
-    this.handleTabChange(0);
+    // select initialActiveTab if it's valid otherwise select the first tab on component mount
+    if (initialActiveTab && children[initialActiveTab]) {
+      this.handleTabChange(initialActiveTab);
+    } else {
+      this.handleTabChange(0);
+    }
   }
 
   componentWillUnmount(): void {
