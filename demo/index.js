@@ -36,6 +36,7 @@ class TabExample extends Component {
   static propTypes = {
     direction: PropTypes.oneOf(['row', 'column']).isRequired,
     isFocusManagedByInk: PropTypes.bool.isRequired,
+    defaultTab: PropTypes.string,
   };
 
   constructor(props) {
@@ -55,7 +56,7 @@ class TabExample extends Component {
   }
 
   render() {
-    const { direction, isFocusManagedByInk } = this.props;
+    const { direction, isFocusManagedByInk, defaultTab } = this.props;
     const { activeTab } = this.state;
 
     const TabElement = isFocusManagedByInk ? FocusableTabs : Tabs;
@@ -83,6 +84,7 @@ class TabExample extends Component {
           onChange={this.handleTabChange}
           flexDirection={direction}
           width={direction === 'column' ? 20 : '100%'}
+          defaultValue={defaultTab}
           // keyMap={{ useTab: false }}
         >
           <Tab name="foo">Foo</Tab>
@@ -98,6 +100,7 @@ render(
   <TabExample
     direction={process.argv.includes('--column') ? 'column' : 'row'}
     isFocusManagedByInk={process.argv.includes('--focus')}
+    defaultTab={process.argv.includes('--changeDefaultTab') ? 'bar' : undefined}
   />,
   { debug: false }
 );
