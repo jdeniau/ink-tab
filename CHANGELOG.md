@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 4.1.0
+
+### Added
+
+Add the `defaultValue` on the `Tabs` component. It allows you to set initial opened tab to any tab you want instead of the first one. Thanks to @zarezadeh (#29)
+
 ## 4.0.0
 
 ### Changed
