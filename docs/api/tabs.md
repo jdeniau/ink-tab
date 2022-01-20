@@ -52,6 +52,10 @@ If you specify a `width` to `<Tabs flexDirection="column"`, the width will be us
 
 The first tab is active by default on component mount, you can choose another tab by setting `defaultValue` to the name of an existing tab.
 
+### **showIndex**
+
+By default an index displayed before each tab, if you don't want this behavior set `showIndex` to `false`
+
 ## **Focus management**
 
 The `Tabs` accept a `isFocused` prop to handle focus management by an external source.

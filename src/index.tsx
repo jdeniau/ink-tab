@@ -50,6 +50,7 @@ export interface TabsProps {
   keyMap?: KeyMapProps;
   isFocused?: boolean;
   defaultValue?: string;
+  showIndex?: boolean;
 }
 interface TabsWithStdinProps extends TabsProps {
   isRawModeSupported: boolean;
@@ -73,6 +74,7 @@ class TabsWithStdin extends React.Component<
     keyMap: null,
     isFocused: null, // isFocused is null mean that the focus not handle by ink
     defaultValue: null,
+    showIndex: true,
   };
 
   constructor(props: TabsWithStdinProps) {
@@ -252,7 +254,14 @@ class TabsWithStdin extends React.Component<
   }
 
   render(): React.ReactNode {
-    const { children, flexDirection, width, isFocused, ...rest } = this.props;
+    const {
+      children,
+      flexDirection,
+      width,
+      isFocused,
+      showIndex,
+      ...rest
+    } = this.props;
     const { activeTab } = this.state;
 
     const separatorWidth = width || 6;
@@ -282,7 +291,7 @@ class TabsWithStdin extends React.Component<
             <Box key={name} flexDirection={flexDirection}>
               {key !== 0 && <Text color="dim">{separator}</Text>}
               <Box>
-                <Text color="grey">{key + 1}. </Text>
+                {showIndex && <Text color="grey">{key + 1}. </Text>}
                 <Text {...colors}>{child}</Text>
               </Box>
             </Box>
