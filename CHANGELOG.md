@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 4.2.0
+
+### Added
+
+Add the `showIndex` on the `Tabs` component. It allows you to disable showing tab indexes.
+
 ## 4.1.0
 
 ### Added
@@ -56,7 +62,7 @@ Add typescript definition files #17. (Thanks to @sw-yx )
 
 ### Fixed
 
-Fix issue with ink >= 2.4.0 preventing keypress events to be triggered. See https://github.com/vadimdemedes/ink/issues/243
+Fix issue with ink >= 2.4.0 preventing keypress events to be triggered. See <https://github.com/vadimdemedes/ink/issues/243>
 
 ## 2.1.3
 

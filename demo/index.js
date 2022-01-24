@@ -86,6 +86,7 @@ class TabExample extends Component {
           width={direction === 'column' ? 20 : '100%'}
           defaultValue={defaultTab}
           // keyMap={{ useTab: false }}
+          // showIndex={false}
         >
           <Tab name="foo">Foo</Tab>
           <Tab name="bar">Bar</Tab>
