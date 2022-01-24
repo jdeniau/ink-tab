@@ -12,7 +12,7 @@
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "yarn build && cls && babel-node demo/index.js",
+    "demo": "yarn build && node demo/clear-screen.js && babel-node demo/index.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
