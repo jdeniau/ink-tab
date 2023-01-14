@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.2.2
+
+Remove `prop-types` package from dependencies
+
 ## 4.2.1
 
 Change types to handle "children" due to @types/react change

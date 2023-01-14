@@ -58,6 +58,7 @@
     "ink": "^3.0.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "rimraf": "^3.0.0",
     "svg-term-cli": "^2.1.1",
@@ -73,8 +74,5 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "dependencies": {
-    "prop-types": "^15.7.2"
   }
 }
