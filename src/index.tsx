@@ -7,6 +7,7 @@ import { Box, StdinProps, BoxProps, Text, useStdin } from 'ink';
  */
 export interface TabProps {
   name: string;
+  children: React.ReactNode;
 }
 
 /**
