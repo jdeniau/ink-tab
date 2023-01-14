@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.2.1
+
+Change types to handle "children" due to @types/react change
+
 ## 4.2.0
 
 ### Added
