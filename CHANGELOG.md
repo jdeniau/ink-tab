@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.2.3
+
+Remove `babel-plugin-typescript-to-proptypes`
+
 ## 4.2.2
 
 Remove `prop-types` package from dependencies
