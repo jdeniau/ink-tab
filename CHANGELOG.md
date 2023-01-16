@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.3.1
+
+Fix TS types
+
 ## 4.3.0
 
 Possiblility to override active tab colors

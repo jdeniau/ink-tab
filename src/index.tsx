@@ -56,8 +56,8 @@ export interface TabsProps {
   showIndex?: boolean;
   colors?: {
     activeTab?: {
-      color?: ExtractFCProps<Text>['color'];
-      backgroundColor?: ExtractFCProps<Text>['backgroundColor'];
+      color?: ExtractFCProps<typeof Text>['color'];
+      backgroundColor?: ExtractFCProps<typeof Text>['backgroundColor'];
     };
   };
 }
