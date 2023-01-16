@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.2.4
+
+Fix react peerDep
+
 ## 4.2.3
 
 Remove `babel-plugin-typescript-to-proptypes`
