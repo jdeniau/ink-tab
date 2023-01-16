@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.3.0
+
+Possiblility to override active tab colors
+
 ## 4.2.4
 
 Fix react peerDep

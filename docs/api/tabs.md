@@ -19,6 +19,16 @@ Parameters:
 
 `onChange` function is called on component start and on every changes in tabs
 
+### **colors**
+
+You can override the default color of the active tab:
+
+```tsx
+<Tabs
+  colors={{ activeTab: { color: 'red', backgroundColor: 'grey' } }}
+>
+```
+
 ### **keyMap**
 
 The default keyMap is the following:

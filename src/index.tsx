@@ -2,6 +2,8 @@ import React from 'react';
 import readline from 'readline';
 import { Box, StdinProps, BoxProps, Text, useStdin } from 'ink';
 
+type ExtractFCProps<T> = T extends React.FunctionComponent<infer P> ? P : never;
+
 /**
  * Represent props of a <Tab>
  */
@@ -52,6 +54,12 @@ export interface TabsProps {
   isFocused?: boolean;
   defaultValue?: string;
   showIndex?: boolean;
+  colors?: {
+    activeTab?: {
+      color?: ExtractFCProps<Text>['color'];
+      backgroundColor?: ExtractFCProps<Text>['backgroundColor'];
+    };
+  };
 }
 interface TabsWithStdinProps extends TabsProps {
   isRawModeSupported: boolean;
@@ -261,6 +269,7 @@ class TabsWithStdin extends React.Component<
       width,
       isFocused,
       showIndex,
+      colors: colorsProp,
       ...rest
     } = this.props;
     const { activeTab } = this.state;
@@ -278,8 +287,14 @@ class TabsWithStdin extends React.Component<
           let colors = {};
           if (isFocused !== false) {
             colors = {
-              backgroundColor: activeTab === key ? 'green' : undefined,
-              color: activeTab === key ? 'black' : undefined,
+              backgroundColor:
+                activeTab === key
+                  ? colorsProp?.activeTab?.color || 'green'
+                  : undefined,
+              color:
+                activeTab === key
+                  ? colorsProp?.activeTab?.backgroundColor || 'black'
+                  : undefined,
             };
           } else {
             colors = {
