@@ -1,6 +1,6 @@
 import React from 'react';
 import readline from 'readline';
-import { Box, StdinProps, BoxProps, Text, useStdin } from 'ink';
+import { Box, type StdinProps, type BoxProps, Text, useStdin } from 'ink';
 
 type ExtractFCProps<T> = T extends React.FunctionComponent<infer P> ? P : never;
 
@@ -16,7 +16,7 @@ export interface TabProps {
  * A <Tab> component
  */
 // eslint-disable-next-line react/prop-types
-const Tab: React.FunctionComponent<TabProps> = ({ children }) => (
+export const Tab: React.FunctionComponent<TabProps> = ({ children }) => (
   <>{children}</>
 );
 
@@ -46,8 +46,8 @@ export interface TabsProps {
    * @param {string} name the name of the tab passed in the `name` prop
    * @param {React.Component<TabProps>} activeTab the current active tab component
    */
-  onChange(name: string, activeTab: React.ReactElement<typeof Tab>): void;
-  children: React.ReactElement<typeof Tab>[];
+  onChange: (name: string, activeTab: React.ReactElement<typeof Tab>) => void;
+  children: Array<React.ReactElement<typeof Tab>>;
   flexDirection?: BoxProps['flexDirection'];
   width?: BoxProps['width'];
   keyMap?: KeyMapProps;
@@ -76,7 +76,7 @@ class TabsWithStdin extends React.Component<
   TabsWithStdinState
 > {
   // eslint-disable-next-line react/sort-comp
-  private defaultKeyMap: RequiredKeyMapProps;
+  private readonly defaultKeyMap: RequiredKeyMapProps;
 
   public static defaultProps = {
     flexDirection: 'row',
@@ -107,19 +107,12 @@ class TabsWithStdin extends React.Component<
   }
 
   componentDidMount(): void {
-    const {
-      stdin,
-      setRawMode,
-      isRawModeSupported,
-      children,
-      defaultValue,
-    } = this.props;
+    const { stdin, setRawMode, isRawModeSupported, children, defaultValue } =
+      this.props;
 
-    if (isRawModeSupported && stdin) {
+    if (isRawModeSupported) {
       // use ink / node `setRawMode` to read key-by-key
-      if (setRawMode) {
-        setRawMode(true);
-      }
+      setRawMode(true);
 
       readline.emitKeypressEvents(stdin);
       stdin.on('keypress', this.handleKeyPress);
@@ -128,9 +121,9 @@ class TabsWithStdin extends React.Component<
     // select defaultValue if it's valid otherwise select the first tab on component mount
     let initialTabIndex = 0;
 
-    if (defaultValue) {
+    if (typeof defaultValue !== 'undefined') {
       const foundIndex = children.findIndex(
-        child => child.props.name === defaultValue
+        (child) => child.props.name === defaultValue
       );
 
       if (foundIndex > 0) {
@@ -144,10 +137,8 @@ class TabsWithStdin extends React.Component<
   componentWillUnmount(): void {
     const { stdin, setRawMode, isRawModeSupported } = this.props;
 
-    if (isRawModeSupported && stdin) {
-      if (setRawMode) {
-        setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
-      }
+    if (isRawModeSupported) {
+      setRawMode(false); // remove set raw mode, as it might interfere with CTRL-C
       stdin.removeListener('keypress', this.handleKeyPress);
     }
   }
@@ -157,6 +148,7 @@ class TabsWithStdin extends React.Component<
 
     const tab = children[tabId];
 
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions -- handle possible runtime errors
     if (!tab) {
       return;
     }
@@ -174,18 +166,18 @@ class TabsWithStdin extends React.Component<
   ): void {
     const { keyMap, isFocused } = this.props;
 
-    if (!key || isFocused === false) {
+    if (key == null || isFocused === false) {
       return;
     }
 
     const currentKeyMap = { ...this.defaultKeyMap, ...keyMap };
     const { useNumbers, useTab, previous, next } = currentKeyMap;
 
-    if (previous.some(keyName => keyName === key.name)) {
+    if (previous.some((keyName) => keyName === key.name)) {
       this.moveToPreviousTab();
     }
 
-    if (next.some(keyName => keyName === key.name)) {
+    if (next.some((keyName) => keyName === key.name)) {
       this.moveToNextTab();
     }
 
@@ -196,7 +188,7 @@ class TabsWithStdin extends React.Component<
           return;
         }
 
-        if (key.shift === true) {
+        if (key.shift) {
           this.moveToPreviousTab();
         } else {
           this.moveToNextTab();
@@ -218,7 +210,7 @@ class TabsWithStdin extends React.Component<
         if (!useNumbers) {
           return;
         }
-        if (key.meta === true) {
+        if (key.meta) {
           const tabId = key.name === '0' ? 9 : parseInt(key.name, 10) - 1;
 
           this.handleTabChange(tabId);
@@ -274,7 +266,7 @@ class TabsWithStdin extends React.Component<
     } = this.props;
     const { activeTab } = this.state;
 
-    const separatorWidth = width || 6;
+    const separatorWidth = width ?? 6;
 
     const separator = this.isColumn()
       ? new Array(separatorWidth).fill('─').join('')
@@ -289,11 +281,11 @@ class TabsWithStdin extends React.Component<
             colors = {
               backgroundColor:
                 activeTab === key
-                  ? colorsProp?.activeTab?.color || 'green'
+                  ? colorsProp?.activeTab?.color ?? 'green'
                   : undefined,
               color:
                 activeTab === key
-                  ? colorsProp?.activeTab?.backgroundColor || 'black'
+                  ? colorsProp?.activeTab?.backgroundColor ?? 'black'
                   : undefined,
             };
           } else {
@@ -307,7 +299,7 @@ class TabsWithStdin extends React.Component<
             <Box key={name} flexDirection={flexDirection}>
               {key !== 0 && <Text color="dim">{separator}</Text>}
               <Box>
-                {showIndex && <Text color="grey">{key + 1}. </Text>}
+                {showIndex === true && <Text color="grey">{key + 1}. </Text>}
                 <Text {...colors}>{child}</Text>
               </Box>
             </Box>
@@ -321,7 +313,7 @@ class TabsWithStdin extends React.Component<
 /**
  * The <Tabs> component
  */
-const Tabs: React.FunctionComponent<TabsProps> = props => {
+export const Tabs: React.FunctionComponent<TabsProps> = (props) => {
   const { isRawModeSupported, stdin, setRawMode } = useStdin();
 
   return (
@@ -333,5 +325,3 @@ const Tabs: React.FunctionComponent<TabsProps> = props => {
     />
   );
 };
-
-export { Tab, Tabs };

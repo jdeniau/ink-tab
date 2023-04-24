@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 5.0.0
+
+- [BREAKING] require ink 4. See [ink 4.0.0 release](https://github.com/vadimdemedes/ink/releases/tag/v4.0.0) to upgrade. `ink-tab` did not change aside from that.
+
 ## 4.3.1
 
 Fix TS types
