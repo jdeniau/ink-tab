@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/jdeniau/ink-tab#readme",
   "peerDependencies": {
-    "@types/react": ">=16.8.0",
-    "ink": "^3.0.0",
-    "react": ">=16.8.0"
+    "@types/react": ">=16.8.0 || ^17.0.0 || ^18.0.0",
+    "ink": "^3.0.0 || ^4.0.0",
+    "react": ">=16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
