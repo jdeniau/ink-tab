@@ -1,7 +1,7 @@
 {
   "name": "ink-tab",
   "type": "module",
-  "version": "4.3.1",
+  "version": "5.0.0",
   "description": "Tab component for Ink",
   "main": "lib/index.js",
   "exports": "./lib/index.js",
