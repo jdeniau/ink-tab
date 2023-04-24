@@ -16,7 +16,7 @@ export interface TabProps {
  * A <Tab> component
  */
 // eslint-disable-next-line react/prop-types
-const Tab: React.FunctionComponent<TabProps> = ({ children }) => (
+export const Tab: React.FunctionComponent<TabProps> = ({ children }) => (
   <>{children}</>
 );
 
@@ -313,7 +313,7 @@ class TabsWithStdin extends React.Component<
 /**
  * The <Tabs> component
  */
-const Tabs: React.FunctionComponent<TabsProps> = (props) => {
+export const Tabs: React.FunctionComponent<TabsProps> = (props) => {
   const { isRawModeSupported, stdin, setRawMode } = useStdin();
 
   return (
@@ -325,5 +325,3 @@ const Tabs: React.FunctionComponent<TabsProps> = (props) => {
     />
   );
 };
-
-export { Tab, Tabs };

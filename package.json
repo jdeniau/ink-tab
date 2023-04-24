@@ -17,7 +17,7 @@
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "yarn build && node demo/clear-screen.js && babel-node demo/index.js",
+    "demo": "yarn build && node demo/clear-screen.js && babel demo/index.jsx > demo/index.compiled.js && node demo/index.compiled.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.21.4",
     "@babel/node": "^7.20.7",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",

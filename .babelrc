@@ -1,18 +1,17 @@
 {
+  "sourceType": "module",
   "presets": [
-    "@babel/typescript",
-    "@babel/react",
+    "@babel/preset-typescript",
+    "@babel/preset-react",
     [
-      "@babel/env",
+      "@babel/preset-env",
       {
-        "targets": {
-          "node": "8"
-        }
+        "modules": false
       }
     ]
   ],
   "plugins": [
     "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread",
+    "@babel/proposal-object-rest-spread"
   ]
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render, Box, Text, useFocus } from 'ink';
-import { Tabs, Tab } from '../lib';
+import { Tabs, Tab } from '../lib/index.js';
 
 function FocusableTabs(props) {
   const { isFocused } = useFocus({ autoFocus: true });
