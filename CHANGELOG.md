@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 5.1.0
+
+- Accept ink 5. The only breaking change is that [ink requires node > 18](https://github.com/vadimdemedes/ink/releases/tag/v5.0.0). ink-tab still accept older node version with ink 4 though.
+
 ## 5.0.0
 
 - [BREAKING] require ink 4. See [ink 4.0.0 release](https://github.com/vadimdemedes/ink/releases/tag/v4.0.0) to upgrade. `ink-tab` did not change aside from that.
