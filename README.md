@@ -1,4 +1,4 @@
-# ink-tab [![Build Status](https://travis-ci.org/jdeniau/ink-tab.svg?branch=master)](https://travis-ci.org/jdeniau/ink-tab)
+# ink-tab
 
 > Tab component for [Ink](https://github.com/vadimdemedes/ink).
 
