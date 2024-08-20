@@ -8,14 +8,27 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x, 19.x, 20.x]
+        versions:
+          - node: '14.x'
+            ink: '^4.0.0'
+          - node: '16.x'
+            ink: '^4.0.0'
+          - node: '18.x'
+          - node: '19.x'
+          - nome: '20.x'
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.versions.node }}
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.versions.node }}
+
+      - name: force ink 4 for older node versions
+        if: ${{ matrix.versions.ink }}
+        run: yarn add ink@${{ matrix.versions.ink }}
+
       - name: npm install, build, and test
         run: |
           yarn install
