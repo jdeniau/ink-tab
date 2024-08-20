@@ -6,7 +6,7 @@
 
 | ink version | ink-tab version |
 | ----------- | --------------- |
-| 4.x         | 5.x             |
+| 4.x, 5.x    | 5.x             |
 | 3.x         | 4.x             |
 
 ## Demo
