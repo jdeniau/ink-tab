@@ -23,6 +23,49 @@ yarn add ink-tab
 ### Usage
 
 {% tabs %}
+
+{% tab title="Javascript : Functional component" %}
+
+```jsx
+import React, { useState } from 'react';
+import { render, Box, Color } from 'ink';
+import { Tabs, Tab } from 'ink-tab';
+
+function TabExample(props) {
+  const [activeTabName, setActiveTabName] = useState(null);
+
+  // the handleTabChange method get two arguments:
+  // - the tab name
+  // - the React tab element
+  function handleTabChange(name, activeTab) {
+    // set the active tab name to do what you want with the content
+    setActiveTabName(name);
+  }
+
+  return (
+    <Box flexDirection="column">
+      <Box>
+        <Text>
+          {activeTabName === 'foo' && 'Selected tab is "foo"'}
+          {activeTabName === 'bar' && 'Selected tab is "bar"'}
+          {activeTabName === 'baz' && 'Selected tab is "baz"'}
+        </Text>
+      </Box>
+
+      <Tabs onChange={handleTabChange}>
+        <Tab name="foo">Foo</Tab>
+        <Tab name="bar">Bar</Tab>
+        <Tab name="baz">Baz</Tab>
+      </Tabs>
+    </Box>
+  );
+}
+
+render(<TabExample />);
+```
+
+{% endtab %}
+
 {% tab title="JavaScript : Class component" %}
 
 ```jsx
@@ -70,48 +113,6 @@ class TabExample extends Component {
       </Box>
     );
   }
-}
-
-render(<TabExample />);
-```
-
-{% endtab %}
-
-{% tab title="Javascript : Functional component" %}
-
-```jsx
-import React, { useState } from 'react';
-import { render, Box, Color } from 'ink';
-import { Tabs, Tab } from 'ink-tab';
-
-function TabExample(props) {
-  const [activeTabName, setActiveTabName] = useState(null);
-
-  // the handleTabChange method get two arguments:
-  // - the tab name
-  // - the React tab element
-  function handleTabChange(name, activeTab) {
-    // set the active tab name to do what you want with the content
-    setActiveTabName(name);
-  }
-
-  return (
-    <Box flexDirection="column">
-      <Box>
-        <Text>
-          {activeTabName === 'foo' && 'Selected tab is "foo"'}
-          {activeTabName === 'bar' && 'Selected tab is "bar"'}
-          {activeTabName === 'baz' && 'Selected tab is "baz"'}
-        </Text>
-      </Box>
-
-      <Tabs onChange={handleTabChange}>
-        <Tab name="foo">Foo</Tab>
-        <Tab name="bar">Bar</Tab>
-        <Tab name="baz">Baz</Tab>
-      </Tabs>
-    </Box>
-  );
 }
 
 render(<TabExample />);

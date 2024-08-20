@@ -52,7 +52,7 @@ You can override it this way:
 
 The `<Tabs>` component pass every props given to the containing `<Box>` of the tabs. This way you can easily build a vertical tabs component by using `<Tabs flexDirection="column">`.
 
-![Demo column](https://github.com/jdeniau/ink-tab/raw/master/media/demo-column.svg?sanitize=true)
+![Demo column](https://github.com/jdeniau/ink-tab/raw/main/media/demo-column.svg?sanitize=true)
 
 ### **width**
 
