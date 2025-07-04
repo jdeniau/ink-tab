@@ -9,13 +9,11 @@ jobs:
     strategy:
       matrix:
         versions:
-          - node: '14.x'
-            ink: '^4.0.0'
-          - node: '16.x'
-            ink: '^4.0.0'
           - node: '18.x'
           - node: '19.x'
-          - nome: '20.x'
+          - node: '20.x'
+          - node: '22.x'
+          - node: '24.x'
 
     steps:
       - uses: actions/checkout@v4
@@ -25,10 +23,8 @@ jobs:
         with:
           node-version: ${{ matrix.versions.node }}
 
-      - name: force ink 4 for older node versions
-        if: ${{ matrix.versions.ink }}
-        run: yarn add ink@${{ matrix.versions.ink }}
-
+      - name: enable corepack
+        run: corepack enable
       - name: npm install, build, and test
         run: |
           yarn install
