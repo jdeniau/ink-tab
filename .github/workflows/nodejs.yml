@@ -10,7 +10,6 @@ jobs:
       matrix:
         versions:
           - node: '18.x'
-          - node: '19.x'
           - node: '20.x'
           - node: '22.x'
           - node: '24.x'

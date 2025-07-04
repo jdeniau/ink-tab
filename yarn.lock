@@ -1895,13 +1895,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.3
-  resolution: "@types/prop-types@npm:15.7.3"
-  checksum: 10c0/511aac811bfdba9dd1c463d6e502d852bb2196048cf861fbf48a97d883dd32c1c44ad2127a18dbb49733d9ad0aafd445d673eb50d5547ca843106835f67b5877
-  languageName: node
-  linkType: hard
-
 "@types/q@npm:^1.5.1":
   version: 1.5.2
   resolution: "@types/q@npm:1.5.2"
@@ -1909,21 +1902,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.0":
-  version: 18.0.38
-  resolution: "@types/react@npm:18.0.38"
+"@types/react@npm:^19.1.0":
+  version: 19.1.8
+  resolution: "@types/react@npm:19.1.8"
   dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/39bad7b8ffe2288f7168fb35ce0fe12109771dcf985e673351074ca7ba8b67884686f92696692b90bbe28a68c2cfe3aabd691e717f88fbf19e01284a14abfdb5
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.16.3
-  resolution: "@types/scheduler@npm:0.16.3"
-  checksum: 10c0/c249d4b96fa05165ac22c214f94a045ee0af8beedefdbc54b769febd0044cab3a874e55419841a0dcc76439e379a63e257f3253c87168e3261e7bc783d623302
+  checksum: 10c0/4908772be6dc941df276931efeb0e781777fa76e4d5d12ff9f75eb2dcc2db3065e0100efde16fde562c5bafa310cc8f50c1ee40a22640459e066e72cd342143e
   languageName: node
   linkType: hard
 
@@ -3287,6 +3271,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-toolkit@npm:^1.22.0":
+  version: 1.39.6
+  resolution: "es-toolkit@npm:1.39.6"
+  dependenciesMeta:
+    "@trivago/prettier-plugin-sort-imports@4.3.0":
+      unplugged: true
+    prettier-plugin-sort-re-exports@0.0.1:
+      unplugged: true
+  checksum: 10c0/2f20c9152be4e1617c15919abee54280d525ac5ed43785201b71aacd4830172539aeadc1362d740d3453f9f1d18a442340024a6cd153441bf75c77d9e2a6d94f
+  languageName: node
+  linkType: hard
+
 "escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -4425,7 +4421,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.21.4"
     "@babel/preset-react": "npm:^7.18.6"
     "@babel/preset-typescript": "npm:^7.21.4"
-    "@types/react": "npm:^18.0.0"
+    "@types/react": "npm:^19.1.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.43.0"
     eslint: "npm:^8.0.1"
     eslint-config-prettier: "npm:^8.8.0"
@@ -4435,27 +4431,27 @@ __metadata:
     eslint-plugin-promise: "npm:^6.0.0"
     eslint-plugin-react: "npm:^7.32.2"
     husky: "npm:^3.1.0"
-    ink: "npm:^5.0.0"
+    ink: "npm:^6.0.0"
     lint-staged: "npm:^9.5.0"
     prettier: "npm:^2.8.8"
     prop-types: "npm:^15.7.2"
-    react: "npm:^18.0.0"
+    react: "npm:^19.1.0"
     rimraf: "npm:^3.0.0"
     svg-term-cli: "npm:^2.1.1"
     typescript: "npm:*"
   peerDependencies:
-    "@types/react": ^18.0.0
-    ink: ^4.0.0 || ^5.0.0
-    react: ^18.0.0
+    "@types/react": ^18.0.0 || ^19.0.0
+    ink: ^4.0.0 || ^5.0.0 || ^6.0.0
+    react: ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
   languageName: unknown
   linkType: soft
 
-"ink@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "ink@npm:5.0.1"
+"ink@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "ink@npm:6.0.1"
   dependencies:
     "@alcalzone/ansi-tokenize": "npm:^0.1.3"
     ansi-escapes: "npm:^7.0.0"
@@ -4466,31 +4462,31 @@ __metadata:
     cli-cursor: "npm:^4.0.0"
     cli-truncate: "npm:^4.0.0"
     code-excerpt: "npm:^4.0.0"
+    es-toolkit: "npm:^1.22.0"
     indent-string: "npm:^5.0.0"
-    is-in-ci: "npm:^0.1.0"
-    lodash: "npm:^4.17.21"
+    is-in-ci: "npm:^1.0.0"
     patch-console: "npm:^2.0.0"
-    react-reconciler: "npm:^0.29.0"
+    react-reconciler: "npm:^0.32.0"
     scheduler: "npm:^0.23.0"
     signal-exit: "npm:^3.0.7"
     slice-ansi: "npm:^7.1.0"
     stack-utils: "npm:^2.0.6"
-    string-width: "npm:^7.0.0"
-    type-fest: "npm:^4.8.3"
+    string-width: "npm:^7.2.0"
+    type-fest: "npm:^4.27.0"
     widest-line: "npm:^5.0.0"
     wrap-ansi: "npm:^9.0.0"
-    ws: "npm:^8.15.0"
-    yoga-wasm-web: "npm:~0.3.3"
+    ws: "npm:^8.18.0"
+    yoga-layout: "npm:~3.2.1"
   peerDependencies:
-    "@types/react": ">=18.0.0"
-    react: ">=18.0.0"
+    "@types/react": ">=19.0.0"
+    react: ">=19.0.0"
     react-devtools-core: ^4.19.1
   peerDependenciesMeta:
     "@types/react":
       optional: true
     react-devtools-core:
       optional: true
-  checksum: 10c0/3cb2eabe7a42e35e70b5f41d88b06465fb6685168de5244d015ef82f8cf1fa85b7c5a190331b66496decac041e792ff9854143bed1089bf15aa98e55a9055a0c
+  checksum: 10c0/3e047cb4f8a2067d650b4057cc778ae38212279aff01ac9dc1984520d7bdf264d81cfe0df8c48519efdeef296b6de6060d402db37ab2730125d7ccc459977d86
   languageName: node
   linkType: hard
 
@@ -4660,12 +4656,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-in-ci@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "is-in-ci@npm:0.1.0"
+"is-in-ci@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "is-in-ci@npm:1.0.0"
   bin:
     is-in-ci: cli.js
-  checksum: 10c0/0895b6ecf8abc18a07611382184a3fbe2a8424c11e8a6fd915fcee950d7027d6a3734068636c86bc084828465bf2878fdcd60a8f4fe06d70ff42e10f5cf8bb73
+  checksum: 10c0/98f9cec4c35aece4cf731abf35ebf28359a9b0324fac810da05b842515d9ccb33b8999c1d9a679f0362e1a4df3292065c38d7f86327b1387fa667bc0150f4898
   languageName: node
   linkType: hard
 
@@ -5136,7 +5132,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:^4.17.15, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -6184,15 +6180,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-reconciler@npm:^0.29.0":
-  version: 0.29.0
-  resolution: "react-reconciler@npm:0.29.0"
+"react-reconciler@npm:^0.32.0":
+  version: 0.32.0
+  resolution: "react-reconciler@npm:0.32.0"
   dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
+    scheduler: "npm:^0.26.0"
   peerDependencies:
-    react: ^18.2.0
-  checksum: 10c0/637442f98ee816b8f86586f537712a0463b53e12c0f4dec716dfdde68dfa52cef1d10138acfad194d5571296cde8715c331aa3986e538087acdc1ef83187a9b0
+    react: ^19.1.0
+  checksum: 10c0/ace0562d2aa99685416ac62741354706dec6df334aa64acc7ad455bd8a6f6af0068b276ad2e5412c3875388022ab13807f0b7d688fda7b2835301c110247146b
   languageName: node
   linkType: hard
 
@@ -6207,12 +6202,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10c0/b562d9b569b0cb315e44b48099f7712283d93df36b19a39a67c254c6686479d3980b7f013dc931f4a5a3ae7645eae6386b4aa5eea933baa54ecd0f9acb0902b8
+"react@npm:^19.1.0":
+  version: 19.1.0
+  resolution: "react@npm:19.1.0"
+  checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
   languageName: node
   linkType: hard
 
@@ -6557,6 +6550,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"scheduler@npm:^0.26.0":
+  version: 0.26.0
+  resolution: "scheduler@npm:0.26.0"
+  checksum: 10c0/5b8d5bfddaae3513410eda54f2268e98a376a429931921a81b5c3a2873aab7ca4d775a8caac5498f8cbc7d0daeab947cf923dbd8e215d61671f9f4e392d34356
+  languageName: node
+  linkType: hard
+
 "semver-compare@npm:^1.0.0":
   version: 1.0.0
   resolution: "semver-compare@npm:1.0.0"
@@ -6875,7 +6875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string-width@npm:^7.0.0":
+"string-width@npm:^7.0.0, string-width@npm:^7.2.0":
   version: 7.2.0
   resolution: "string-width@npm:7.2.0"
   dependencies:
@@ -7303,10 +7303,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.8.3":
-  version: 4.25.0
-  resolution: "type-fest@npm:4.25.0"
-  checksum: 10c0/1187b30d74e72f4b0b44a3493d2c1c2a9dc46423961c8250bd1535e976c4b8afc3916f6b4b90d7f56ed5b2f36d1645b05c318b4915fe4909a8a66890bda1d68d
+"type-fest@npm:^4.27.0":
+  version: 4.41.0
+  resolution: "type-fest@npm:4.41.0"
+  checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
   languageName: node
   linkType: hard
 
@@ -7607,9 +7607,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.15.0":
-  version: 8.18.0
-  resolution: "ws@npm:8.18.0"
+"ws@npm:^8.18.0":
+  version: 8.18.3
+  resolution: "ws@npm:8.18.3"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ">=5.0.2"
@@ -7618,7 +7618,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 10c0/25eb33aff17edcb90721ed6b0eb250976328533ad3cd1a28a274bd263682e7296a6591ff1436d6cbc50fa67463158b062f9d1122013b361cec99a05f84680e06
+  checksum: 10c0/eac918213de265ef7cb3d4ca348b891a51a520d839aa51cdb8ca93d4fa7ff9f6ccb339ccee89e4075324097f0a55157c89fa3f7147bde9d8d7e90335dc087b53
   languageName: node
   linkType: hard
 
@@ -7671,9 +7671,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yoga-wasm-web@npm:~0.3.3":
-  version: 0.3.3
-  resolution: "yoga-wasm-web@npm:0.3.3"
-  checksum: 10c0/d46ae3a436409e89eb0ea3b8c7624dafaf2c846d9038fdf8aa0cc839f73a2577b679bdc22997596177de74c580a6cdc3206c98fd2acd91b66f85462d9d9d260a
+"yoga-layout@npm:~3.2.1":
+  version: 3.2.1
+  resolution: "yoga-layout@npm:3.2.1"
+  checksum: 10c0/9001e51be993c85e03757e5a04a2b61b8b30c9e5a7865d0156ca87a6431a3b717d51eb4990bfe588189fcfeac688dd9c3de707bbd50d1c344a84e63974cc54a8
   languageName: node
   linkType: hard
