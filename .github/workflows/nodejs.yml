@@ -25,10 +25,10 @@ jobs:
 
       - name: enable corepack
         run: corepack enable
-      - name: npm install, build, and test
-        run: |
-          yarn install
-          yarn run lint
-          yarn check-types
-        env:
-          CI: true
+      - name: install
+        run: yarn install --immutable
+      - name: lint
+        run: yarn run lint
+
+      - name: check types
+        run: yarn check-types
