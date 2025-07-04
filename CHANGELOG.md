@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 5.2.0
+
+- Allow ink 6.x [#61](https://github.com/jdeniau/ink-tab/pull/61) by [@jdeniau](https://github.com/jdeniau)
+- Use yarn 4 [#62](https://github.com/jdeniau/ink-tab/pull/62) by [@jdeniau](https://github.com/jdeniau)
+  Remove tests on node 14 / 16, but compat should still work. BTW Node 14 and 16 are not supported anymore for a long time ago.
+
 ## 5.1.0
 
 - Accept ink 5. The only breaking change is that [ink requires node > 18](https://github.com/vadimdemedes/ink/releases/tag/v5.0.0). ink-tab still accept older node version with ink 4 though.
